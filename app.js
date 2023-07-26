@@ -12,7 +12,11 @@ app.use(express.static('public'));
 // Register View Engine (EJS)
 app.set('view engine', 'ejs');
 
-// Render a view
+// Render views
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/add-product', (req, res) => {
+  res.render('add-product');
 });

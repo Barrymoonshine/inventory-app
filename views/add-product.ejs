@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Inventory Application</title>
+  </head>
+  <body>
+    <div class="header">
+      <h3>Hello World!</h3>
+      <nav>
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/add-product">+Product</a></li>
+          <li>+Category</li>
+        </ul>
+      </nav>
+    </div>
+     <form >
+        <label for="name"> Product Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="name"> Stock Keeping Unit (SKU): </label>
+        <input type="text" id="SKU" name="SKU" required />
+        <label for="description"> Product Description:</label>
+        <textarea id="body" name="description" required></textarea>
+        <label for="name"> Cost:</label>
+        <input type="number" id="cost" name="cost" required />
+        <label for="name"> Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required />
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
