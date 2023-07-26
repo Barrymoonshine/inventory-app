@@ -20,3 +20,7 @@ app.get('/', (req, res) => {
 app.get('/add-product', (req, res) => {
   res.render('add-product');
 });
+
+app.get('/add-category', (req, res) => {
+  res.render('add-category');
+});
