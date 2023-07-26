@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css" />
-    <title>Inventory Application</title>
-  </head>
+  <%- include('./partials/head.ejs')%>
   <body>
-    <div class="header">
-      <h3>Hello World!</h3>
-      <nav>
-        <ul>
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/add-product">+Product</a></li>
-          <li><a href="/add-category">+Category</a></li>
-        </ul>
-      </nav>
-    </div>
+    <%- include('./partials/nav.ejs')%>
     <div class="dashboard-container">
       <div>Total Products</div>
       <div>Total Store Value</div>
@@ -37,5 +23,6 @@
       <button>delete</button>
       <button>view</button>
     </div>
+    <%- include('./partials/footer.ejs')%>
   </body>
 </html>
