@@ -4,28 +4,46 @@
   <body>
     <%- include('./partials/nav.ejs')%>
     <div class="dashboard-container">
-      <div>Total Products</div>
-      <div>Total Store Value</div>
-      <div>Out of Stock</div>
-      <div>All Categories</div>
-      Prod details to go here:
+      <div class="dashboard-stats">
+        <div class="stat-top-row">
+          <div class="stat">Total Products</div>
+          <div class="stat">Total Store Value</div>
+        </div>
+        <div class="stat-bottom-row">
+          <div class="stat">Out of Stock</div>
+          <div class="stat">All Categories</div>
+        </div>  
+      </div>
       <div class="products-content">
+        <div class='products-table'>
+          <div class="table-header">Name</div>
+          <div class="table-header">SKU</div>
+          <div class="table-header">Actions</div>
+          <div class="table-header">Cost</div>
+          <div class="table-header">Quantity</div>
+          <div class="table-header">Total Value</div>
+          <div class="table-header">In Stock</div>
+          <div class="table-header">Category</div>
+        </div>
         <% if(products.length >0 ) { %> <% products.map((product) => { %>
-          <h3 class="name"><%=product.name%></h3>
-          <p class="sku"><%=product.sku%></p>
-          <p class="cost"><%=`£${product.cost.toFixed(2)}`%></p>
-          <p class="quantity"><%=product.quantity%></p>
-          <p class="total-value"><%=`£${(product.quantity*product.cost).toFixed(2)}`%></p>
-          <p class="stock-status"><%=product.inStock%></p>
-          <p class="category"><%=product.category%></p>
-          <button>edit</button>
-          <button>delete</button>
-          <button>view</button>
-        </a>
+          <div class="product-row">
+            <div ><%=product.name%></div>
+            <div><%=product.sku%></div>
+            <div>
+              <button>edit</button>
+              <button>delete</button>
+              <button>view</button>
+            </div>
+            <div><%=`£${product.cost.toFixed(2)}`%></div>
+            <div><%=product.quantity%></div>
+            <div><%=`£${(product.quantity*product.cost).toFixed(2)}`%></div>
+            <div><%=product.inStock%></div>
+            <div><%=product.category%></div>  
+          </div>     
         <%})} else {%>
         <p>No products saved</p>
         <%}%>
-    </div>
+        </div>    
     <%- include('./partials/footer.ejs')%>
   </body>
 </html>

@@ -1,3 +1,80 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: antiquewhite;
+}
+
+.right-nav ul li {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px 20px 0px;
+}
+
+.dashboard-stats {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 10vh;
+}
+
+.stat-bottom-row,
+.stat-top-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.stat {
+  background-color: red;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.products-table,
+.product-row {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(8, 1fr);
+  width: 1200px;
+}
+
+.table-header {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  padding: 8px;
+}
+
 h3 {
   color: red;
+}
+
+footer {
+  font-size: 15px;
+  padding: 50px 0 20px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
 }
