@@ -12,10 +12,10 @@
         <div class="stat-bottom-row">
           <div class="stat">Out of Stock</div>
           <div class="stat">All Categories</div>
-        </div>  
+        </div>
       </div>
       <div class="products-content">
-        <div class='products-table'>
+        <div class="products-table">
           <div class="table-header">Name</div>
           <div class="table-header">SKU</div>
           <div class="table-header">Actions</div>
@@ -26,24 +26,25 @@
           <div class="table-header">Category</div>
         </div>
         <% if(products.length >0 ) { %> <% products.map((product) => { %>
-          <div class="product-row">
-            <div ><%=product.name%></div>
-            <div><%=product.sku%></div>
-            <div>
-              <button>edit</button>
-              <button>delete</button>
-              <button>view</button>
-            </div>
-            <div><%=`£${product.cost.toFixed(2)}`%></div>
-            <div><%=product.quantity%></div>
-            <div><%=`£${(product.quantity*product.cost).toFixed(2)}`%></div>
-            <div><%=product.inStock%></div>
-            <div><%=product.category%></div>  
-          </div>     
+        <div class="product-row">
+          <div><%=product.name%></div>
+          <div><%=product.sku%></div>
+          <div>
+            <button>edit</button>
+            <button>delete</button>
+            <button>view</button>
+          </div>
+          <div><%=`£${product.cost.toFixed(2)}`%></div>
+          <div><%=product.quantity%></div>
+          <div><%=`£${(product.quantity*product.cost).toFixed(2)}`%></div>
+          <div><%=product.inStock%></div>
+          <div><%=product.category%></div>
+        </div>
         <%})} else {%>
         <p>No products saved</p>
         <%}%>
-        </div>    
+      </div>
+    </div>
     <%- include('./partials/footer.ejs')%>
   </body>
 </html>

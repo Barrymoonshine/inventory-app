@@ -27,27 +27,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/add-product', (req, res) => {
-  const product = new Product({
-    name: 'bic cristal ballpoint',
-    sku: 'B004DBHR2Q',
-    description: 'Medium point pens, pack of ten',
-    cost: 1.5,
-    quantity: 10,
-    inStock: true,
-    category: 'stationary',
-  });
-  product
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(`Mongoose save error: ${err}`);
-    });
-});
-
-app.get('/dashboard', (req, res) => {
+// Product routes
+app.get('/products', (req, res) => {
   Product.find()
     .sort({ createdAt: -1 })
     .then((result) => {
@@ -56,4 +37,24 @@ app.get('/dashboard', (req, res) => {
     .catch((err) => {
       console.log(`Mongoose find error: ${err}`);
     });
+});
+
+app.get('/add-product', (req, res) => {
+  res.render('add-product');
+});
+
+app.post('/products', (req, res) => {
+  const inStockBoolean = req.body.inStock === 'on';
+  console.log('req.body', req.body);
+  console.log('inStockBoolean', inStockBoolean);
+  console.log({ ...req.body, inStock: inStockBoolean });
+  // const product = new Product(req.body);
+  // product
+  //   .save()
+  //   .then((result) => {
+  //     res.redirect('/blogs');
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 });
