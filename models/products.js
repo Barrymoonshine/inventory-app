@@ -9,7 +9,7 @@ const productsSchema = new Schema(
       type: String,
       required: true,
     },
-    SKU: {
+    sku: {
       type: String,
       required: true,
     },
@@ -22,10 +22,6 @@ const productsSchema = new Schema(
       required: true,
     },
     quantity: {
-      type: Number,
-      required: true,
-    },
-    totalValue: {
       type: Number,
       required: true,
     },

@@ -29,12 +29,11 @@ app.get('/', (req, res) => {
 
 app.get('/add-product', (req, res) => {
   const product = new Product({
-    name: 'helix 30cm ruler',
-    SKU: 'B0098LXLFI',
-    description: '30cm folding ruler, blue',
-    cost: 2.15,
-    quantity: 15,
-    totalValue: 32.25,
+    name: 'bic cristal ballpoint',
+    sku: 'B004DBHR2Q',
+    description: 'Medium point pens, pack of ten',
+    cost: 1.5,
+    quantity: 10,
     inStock: true,
     category: 'stationary',
   });
