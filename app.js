@@ -28,7 +28,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/add-product', (req, res) => {
-  const product = new Product(req.body);
+  const product = new Product({
+    name: 'helix 30cm ruler',
+    SKU: 'B0098LXLFI',
+    description: '30cm folding ruler, blue',
+    cost: 2.15,
+    quantity: 15,
+    totalValue: 32.25,
+    inStock: true,
+    category: 'stationary',
+  });
   product
     .save()
     .then((result) => {
@@ -39,6 +48,13 @@ app.get('/add-product', (req, res) => {
     });
 });
 
-app.get('/add-category', (req, res) => {
-  res.render('add-category');
+app.get('/dashboard', (req, res) => {
+  Product.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render('dashboard', { products: result });
+    })
+    .catch((err) => {
+      console.log(`Mongoose find error: ${err}`);
+    });
 });
