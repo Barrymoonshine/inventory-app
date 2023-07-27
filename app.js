@@ -1,12 +1,21 @@
 import express from 'express';
+import 'dotenv/config';
+import mongoose from 'mongoose';
 
 // Set up Express app
 const app = express();
 
-// Listen for requests
-app.listen(3000);
+// Connect to mongoDB
+const dbURI = `mongodb+srv://${process.env.DB_CREDENTIALS}@cluster0.wym9xjg.mongodb.net/?retryWrites=true&w=majority`;
 
-// Middleware & static files
+// Listen for requests
+mongoose
+  .connect(dbURI)
+  // Only listen for requests after connecting to database
+  .then((result) => app.listen(3000))
+  .catch((err) => console.log(err));
+
+// Middleware
 app.use(express.static('public'));
 
 // Register View Engine (EJS)
