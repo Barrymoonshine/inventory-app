@@ -1,6 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import mongoose from 'mongoose';
+import Product from './models/products.js';
 
 // Set up Express app
 const app = express();
@@ -11,15 +12,15 @@ const dbURI = `mongodb+srv://${process.env.DB_CREDENTIALS}@cluster0.wym9xjg.mong
 // Listen for requests
 mongoose
   .connect(dbURI)
-  // Only listen for requests after connecting to database
   .then((result) => app.listen(3000))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(`Mongoose connection error: ${err}`));
+
+// Register view engine (EJS)
+app.set('view engine', 'ejs');
 
 // Middleware
 app.use(express.static('public'));
-
-// Register View Engine (EJS)
-app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
 
 // Render views
 app.get('/', (req, res) => {
@@ -27,7 +28,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/add-product', (req, res) => {
-  res.render('add-product');
+  const product = new Product(req.body);
+  product
+    .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(`Mongoose save error: ${err}`);
+    });
 });
 
 app.get('/add-category', (req, res) => {
