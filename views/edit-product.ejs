@@ -3,25 +3,62 @@
   <%- include('./partials/head.ejs')%>
   <body>
     <%- include('./partials/nav.ejs')%> Edit product page
-    <!-- <div class="add-product-content">
+    <div class="add-product-content">
       <form action="/products" method="POST">
         <label for="name"> Product Name:</label>
-        <input type="text" id="name" name="name" required />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%= product.name %>"
+          required
+        />
         <label for="name"> Stock Keeping Unit (SKU): </label>
-        <input type="text" id="sku" name="sku" required />
+        <input
+          type="text"
+          id="sku"
+          name="sku"
+          value="<%= product.sku %>"
+          required
+        />
         <label for="description"> Product Description:</label>
-        <textarea id="body" name="description" required></textarea>
-        <label for="name"> Cost:</label>
-        <input type="number" id="cost" name="cost" required />
+        <textarea id="body" name="description" required>
+<%= product.description %></textarea
+        >
+        <label for="cost"> Cost:</label>
+        <input
+          type="number"
+          id="cost"
+          name="cost"
+          value="<%= product.cost %>"
+          required
+        />
         <label for="in stock"> In Stock:</label>
-        <input type="checkbox" id="in-stock" name="inStock" />
+        <input
+          type="checkbox"
+          id="in-stock"
+          name="inStock"
+          checked="<%= product.inStock %>"
+        />
         <label for="name"> Quantity:</label>
-        <input type="number" id="quantity" name="quantity" required />
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          value="<%= product.quantity %>"
+          required
+        />
         <label for="category"> Category:</label>
-        <input type="text" id="category" name="category" required />
+        <input
+          type="text"
+          id="category"
+          name="category"
+          value="<%= product.category %>"
+          required
+        />
         <button>Submit</button>
       </form>
-    </div> -->
+    </div>
     <%- include('./partials/footer.ejs')%>
   </body>
 </html>
