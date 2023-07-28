@@ -21,8 +21,8 @@
           <div class="table-header">Actions</div>
           <div class="table-header">Cost</div>
           <div class="table-header">Quantity</div>
-          <div class="table-header">Total Value</div>
-          <div class="table-header">In Stock</div>
+          <div class="table-header">Value</div>
+          <div class="table-header">Availability</div>
           <div class="table-header">Category</div>
         </div>
         <% if(products.length >0 ) { %> <% products.map((product) => { %>
@@ -30,9 +30,9 @@
           <div><%=product.name%></div>
           <div><%=product.sku%></div>
           <div>
-            <button id="edit">edit</button>
+            <button id="edit" data-doc="<%= product._id %>">edit</button>
             <button id="delete" data-doc="<%= product._id %>">delete</button>
-            <button id="view">view</button>
+            <button id="view" data-doc="<%= product._id %>">view</button>
           </div>
           <div><%=`£${product.cost.toFixed(2)}`%></div>
           <div><%=product.quantity%></div>

@@ -43,6 +43,7 @@ app.get('/add-product', (req, res) => {
   res.render('add-product');
 });
 
+// Add new product to DB
 app.post('/products', (req, res) => {
   const inStockBoolean = req.body.inStock === 'on';
   const product = new Product({ ...req.body, inStock: inStockBoolean });
@@ -52,6 +53,19 @@ app.post('/products', (req, res) => {
       res.redirect('/products');
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`Mongo DB add to DB error: ${err}`);
+    });
+});
+
+// Display specifc product
+
+app.get('/product/:id', (req, res) => {
+  const { id } = req.params;
+  Product.findById(id)
+    .then((result) => {
+      res.render('product-details', { product: result });
+    })
+    .catch((err) => {
+      console.log(`Display product error: ${err}`);
     });
 });
