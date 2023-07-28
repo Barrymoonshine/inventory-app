@@ -27,19 +27,6 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-// Display specific product
-app.get('/products/:id', (req, res) => {
-  const { id } = req.params;
-  console.log(`id: ${id}`);
-  Product.findById(id)
-    .then((result) => {
-      res.render('product-details', { product: result });
-    })
-    .catch((err) => {
-      console.log(`Display product error: ${err}`);
-    });
-});
-
 // Product routes
 app.get('/products', (req, res) => {
   Product.find()
@@ -49,6 +36,30 @@ app.get('/products', (req, res) => {
     })
     .catch((err) => {
       console.log(`Mongoose find error: ${err}`);
+    });
+});
+
+// Display specific product
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params;
+  Product.findById(id)
+    .then((result) => {
+      res.render('product-details', { product: result });
+    })
+    .catch((err) => {
+      console.log(`Display product error: ${err}`);
+    });
+});
+
+// Delete product
+app.delete('/products/:id', (req, res) => {
+  const { id } = req.params;
+  Product.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: '/products' });
+    })
+    .catch((err) => {
+      console.log(`Display product error: ${err}`);
     });
 });
 

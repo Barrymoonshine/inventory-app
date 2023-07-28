@@ -12,10 +12,14 @@ dynamicProdContainer.addEventListener('click', (e) => {
       console.log(`edit clicked, endpoint: ${endpoint}`);
       break;
     case 'delete':
-      console.log(`delete clicked, endpoint: ${endpoint}`);
-      break;
-    case 'view':
-      console.log(`view clicked, endpoint: ${endpoint}`);
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+        .then((response) => response.json())
+        .then((data) => (window.location.href = data.redirect))
+        .catch((err) => {
+          console.log(err);
+        });
       break;
     default:
       console.log('default case');

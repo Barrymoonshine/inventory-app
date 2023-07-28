@@ -12,8 +12,8 @@
       <p>Quantity <%= product.quantity %></p>
       <p>Value <%=`£${(product.quantity*product.cost).toFixed(2)}`%></p>
       <p>Description<%= product.description %></p>
-      <p><%= product.createdAt %></p>
-      <p><%= product.updatedAt %></p>
+      <p>Created at:<%= product.createdAt %></p>
+      <p>Last updated:<%= product.updatedAt %></p>
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>
