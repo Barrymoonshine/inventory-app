@@ -14,7 +14,7 @@
           <div class="stat">All Categories</div>
         </div>
       </div>
-      <div class="products-content">
+      <div class="dynamic-products-container">
         <div class="products-table">
           <div class="table-header">Name</div>
           <div class="table-header">SKU</div>
@@ -30,9 +30,9 @@
           <div><%=product.name%></div>
           <div><%=product.sku%></div>
           <div>
-            <button>edit</button>
-            <button>delete</button>
-            <button>view</button>
+            <button id="edit">edit</button>
+            <button id="delete" data-doc="<%= product._id %>">delete</button>
+            <button id="view">view</button>
           </div>
           <div><%=`£${product.cost.toFixed(2)}`%></div>
           <div><%=product.quantity%></div>
