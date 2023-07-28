@@ -45,16 +45,13 @@ app.get('/add-product', (req, res) => {
 
 app.post('/products', (req, res) => {
   const inStockBoolean = req.body.inStock === 'on';
-  console.log('req.body', req.body);
-  console.log('inStockBoolean', inStockBoolean);
-  console.log({ ...req.body, inStock: inStockBoolean });
-  // const product = new Product(req.body);
-  // product
-  //   .save()
-  //   .then((result) => {
-  //     res.redirect('/blogs');
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
+  const product = new Product({ ...req.body, inStock: inStockBoolean });
+  product
+    .save()
+    .then((result) => {
+      res.redirect('/products');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
