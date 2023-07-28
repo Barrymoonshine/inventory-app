@@ -27,6 +27,19 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+// Display specific product
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params;
+  console.log(`id: ${id}`);
+  Product.findById(id)
+    .then((result) => {
+      res.render('product-details', { product: result });
+    })
+    .catch((err) => {
+      console.log(`Display product error: ${err}`);
+    });
+});
+
 // Product routes
 app.get('/products', (req, res) => {
   Product.find()
@@ -54,18 +67,5 @@ app.post('/products', (req, res) => {
     })
     .catch((err) => {
       console.log(`Mongo DB add to DB error: ${err}`);
-    });
-});
-
-// Display specifc product
-
-app.get('/product/:id', (req, res) => {
-  const { id } = req.params;
-  Product.findById(id)
-    .then((result) => {
-      res.render('product-details', { product: result });
-    })
-    .catch((err) => {
-      console.log(`Display product error: ${err}`);
     });
 });
