@@ -39,6 +39,19 @@ app.get('/products', (req, res) => {
     });
 });
 
+// Edit a specific product
+app.get('/products/edit-product/:id', (req, res) => {
+  console.log('edit-product called');
+  const { id } = req.params;
+  Product.findById(id)
+    .then((result) => {
+      res.render('edit-product', { product: result });
+    })
+    .catch((err) => {
+      console.log(`Edit product error: ${err}`);
+    });
+});
+
 // Display specific product
 app.get('/products/:id', (req, res) => {
   const { id } = req.params;

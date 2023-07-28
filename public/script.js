@@ -8,9 +8,6 @@ dynamicProdContainer.addEventListener('click', (e) => {
   const targetElement = e.target.id;
   const endpoint = `/products/${e.target.dataset.doc}`;
   switch (targetElement) {
-    case 'edit':
-      console.log(`edit clicked, endpoint: ${endpoint}`);
-      break;
     case 'delete':
       fetch(endpoint, {
         method: 'DELETE',

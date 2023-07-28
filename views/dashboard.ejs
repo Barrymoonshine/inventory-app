@@ -30,7 +30,9 @@
           <div><%=product.name%></div>
           <div><%=product.sku%></div>
           <div>
-            <button id="edit" data-doc="<%= product._id %>">edit</button>
+            <button id="edit" data-doc="<%= product._id %>">
+              <a href="/products/edit-product/<%= product._id %>">edit</a>
+            </button>
             <button id="delete" data-doc="<%= product._id %>">delete</button>
             <button id="view">
               <a href="/products/<%= product._id %>">view</a>
