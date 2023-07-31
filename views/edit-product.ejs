@@ -4,7 +4,7 @@
   <body>
     <%- include('./partials/nav.ejs')%> Edit product page
     <div class="add-product-content">
-      <form class="edit-product-form">
+      <form class="edit-product-form" data-doc="<%= product._id %>">
         <label for="name"> Product Name:</label>
         <input
           type="text"
@@ -77,8 +77,10 @@
 
     editProdForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const endpoint = `/products/${e.target.dataset.doc}`;
       const inStockBoolean = getValue('in-stock') === 'on';
       const formData = {
+        _id: e.target.dataset.doc,
         name: getValue('name'),
         sku: getValue('sku'),
         description: getValue('description'),
@@ -87,7 +89,18 @@
         quantity: getValue('quantity'),
         category: getValue('category'),
       };
-      console.log('formData', formData);
+      fetch(endpoint, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'PUT',
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => (window.location.href = data.redirect))
+        .catch((err) => {
+          console.log(err);
+        });
     });
   </script>
 </html>

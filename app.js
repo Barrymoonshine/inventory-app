@@ -21,6 +21,7 @@ app.set('view engine', 'ejs');
 // Middleware
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Render views
 app.get('/', (req, res) => {
@@ -92,5 +93,17 @@ app.post('/products', (req, res) => {
     })
     .catch((err) => {
       console.log(`Mongo DB add to DB error: ${err}`);
+    });
+});
+
+// Update/edit a specific product
+app.put('/products/:id', (req, res) => {
+  console.log('req.body', req.body);
+  Product.findByIdAndUpdate(req.body._id, req.body)
+    .then((result) => {
+      res.json({ redirect: '/dashboard' });
+    })
+    .catch((err) => {
+      console.log(`Edit product error: ${err}`);
     });
 });
