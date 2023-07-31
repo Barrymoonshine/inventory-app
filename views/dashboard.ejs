@@ -30,13 +30,9 @@
           <div><%=product.name%></div>
           <div><%=product.sku%></div>
           <div>
-            <button id="edit" data-doc="<%= product._id %>">
-              <a href="/products/edit-product/<%= product._id %>">edit</a>
-            </button>
+            <a href="/products/<%= product._id %>">edit</a>
             <button id="delete" data-doc="<%= product._id %>">delete</button>
-            <button id="view">
-              <a href="/products/<%= product._id %>">view</a>
-            </button>
+            <a href="/products/<%= product._id %>">view</a>
           </div>
           <div><%=`£${product.cost.toFixed(2)}`%></div>
           <div><%=product.quantity%></div>
@@ -51,4 +47,27 @@
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>
+  <script>
+    const dynamicProdContainer = document.querySelector(
+      '.dynamic-products-container'
+    );
+    dynamicProdContainer.addEventListener('click', (e) => {
+      const targetElement = e.target.id;
+      const endpoint = `/products/${e.target.dataset.doc}`;
+      switch (targetElement) {
+        case 'delete':
+          fetch(endpoint, {
+            method: 'DELETE',
+          })
+            .then((response) => response.json())
+            .then((data) => (window.location.href = data.redirect))
+            .catch((err) => {
+              console.log(err);
+            });
+          break;
+        default:
+          console.log('default case');
+      }
+    });
+  </script>
 </html>

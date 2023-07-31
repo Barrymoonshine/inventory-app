@@ -4,7 +4,7 @@
   <body>
     <%- include('./partials/nav.ejs')%> Edit product page
     <div class="add-product-content">
-      <form action="/products" method="POST">
+      <form id="edit-product-form">
         <label for="name"> Product Name:</label>
         <input
           type="text"
@@ -23,8 +23,8 @@
         />
         <label for="description"> Product Description:</label>
         <textarea id="body" name="description" required>
-<%= product.description %></textarea
-        >
+        <%= product.description %>
+        </textarea>
         <label for="cost"> Cost:</label>
         <input
           type="number"
@@ -56,6 +56,15 @@
           value="<%= product.category %>"
           required
         />
+        <div class="hidden">
+          <input
+            class="hidden"
+            type="text"
+            name="productId"
+            value="<%= product._id %>"
+            required
+          />
+        </div>
         <button>Submit</button>
       </form>
     </div>

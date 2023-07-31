@@ -27,31 +27,6 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-// Product routes
-app.get('/products', (req, res) => {
-  Product.find()
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render('dashboard', { products: result });
-    })
-    .catch((err) => {
-      console.log(`Mongoose find error: ${err}`);
-    });
-});
-
-// Edit a specific product
-app.get('/products/edit-product/:id', (req, res) => {
-  console.log('edit-product called');
-  const { id } = req.params;
-  Product.findById(id)
-    .then((result) => {
-      res.render('edit-product', { product: result });
-    })
-    .catch((err) => {
-      console.log(`Edit product error: ${err}`);
-    });
-});
-
 // Display specific product
 app.get('/products/:id', (req, res) => {
   const { id } = req.params;
@@ -66,18 +41,32 @@ app.get('/products/:id', (req, res) => {
 
 // Delete product
 app.delete('/products/:id', (req, res) => {
+  console.log('delete called');
   const { id } = req.params;
   Product.findByIdAndDelete(id)
     .then((result) => {
-      res.json({ redirect: '/products' });
+      res.json({ redirect: '/dashboard' });
     })
     .catch((err) => {
       console.log(`Display product error: ${err}`);
     });
 });
 
+// Go to add a new product page
 app.get('/add-product', (req, res) => {
   res.render('add-product');
+});
+
+// Display dashboard
+app.get('/dashboard', (req, res) => {
+  Product.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render('dashboard', { products: result });
+    })
+    .catch((err) => {
+      console.log(`Mongoose find error: ${err}`);
+    });
 });
 
 // Add new product to DB
@@ -87,7 +76,7 @@ app.post('/products', (req, res) => {
   product
     .save()
     .then((result) => {
-      res.redirect('/products');
+      res.redirect('/dashboard');
     })
     .catch((err) => {
       console.log(`Mongo DB add to DB error: ${err}`);

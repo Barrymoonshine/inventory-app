@@ -97,6 +97,10 @@ h3 {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
 footer {
   font-size: 15px;
   padding: 50px 0 20px 0;
