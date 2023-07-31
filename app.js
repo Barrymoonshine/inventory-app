@@ -54,7 +54,6 @@ app.get('/products/edit-product/:id', (req, res) => {
 
 // Delete product
 app.delete('/products/:id', (req, res) => {
-  console.log('delete called');
   const { id } = req.params;
   Product.findByIdAndDelete(id)
     .then((result) => {
@@ -98,7 +97,6 @@ app.post('/products', (req, res) => {
 
 // Update/edit a specific product
 app.put('/products/:id', (req, res) => {
-  console.log('req.body', req.body);
   Product.findByIdAndUpdate(req.body._id, req.body)
     .then((result) => {
       res.json({ redirect: '/dashboard' });

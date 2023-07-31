@@ -25,12 +25,14 @@
         <textarea id="description" name="description" required>
         <%= product.description %>
         </textarea>
-        <label for="cost"> Cost:</label>
+        <label for="cost"> Price (£):</label>
         <input
           type="number"
           id="cost"
           name="cost"
           value="<%= product.cost %>"
+          step="0.01"
+          placeholder="0.00"
           required
         />
         <label for="in stock"> In Stock:</label>
@@ -81,6 +83,7 @@
       console.log(getValue('in-stock'));
       const inStockBoolean =
         document.getElementById('in-stock').checked === 'on';
+      console.log('cost', getValue('cost'));
       const formData = {
         _id: e.target.dataset.doc,
         name: getValue('name'),
