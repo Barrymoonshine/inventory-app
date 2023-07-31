@@ -78,7 +78,9 @@
     editProdForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const endpoint = `/products/${e.target.dataset.doc}`;
-      const inStockBoolean = getValue('in-stock') === 'on';
+      console.log(getValue('in-stock'));
+      const inStockBoolean =
+        document.getElementById('in-stock').checked === 'on';
       const formData = {
         _id: e.target.dataset.doc,
         name: getValue('name'),

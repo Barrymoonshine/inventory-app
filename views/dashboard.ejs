@@ -16,7 +16,10 @@
           </div>
         </div>
         <div class="stat-bottom-row">
-          <div class="stat">Out of Stock</div>
+          <div class="stat">
+            Out of Stock: <%= products.reduce((acc,curr) => acc + !curr.inStock,
+            0) %>
+          </div>
           <div class="stat">All Categories</div>
         </div>
       </div>
