@@ -7,11 +7,11 @@
       <div class="dashboard-stats">
         <div class="stat-top-row">
           <div class="stat">
-            Total Products: <%= products.reduce((acc,curr) => acc +
-            curr.quantity, 0) %>
+            Products: <%= products.reduce((acc,curr) => acc + curr.quantity, 0)
+            %>
           </div>
           <div class="stat">
-            Total Store Value: £<%= products.reduce((acc,curr) => acc +
+            Store Value: £<%= products.reduce((acc,curr) => acc +
             parseFloat((curr.quantity*curr.cost).toFixed(2)),0) %>
           </div>
         </div>
@@ -20,7 +20,11 @@
             Out of Stock: <%= products.reduce((acc,curr) => acc + !curr.inStock,
             0) %>
           </div>
-          <div class="stat">All Categories</div>
+          <div class="stat">
+            Categories: <% const categories = []; products.map((product) =>
+            categories.push(product.category)); const uniqueCategories =[...new
+            Set(categories)].length; %> <%= uniqueCategories %>
+          </div>
         </div>
       </div>
       <div class="dynamic-products-container">
