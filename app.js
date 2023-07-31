@@ -39,6 +39,18 @@ app.get('/products/:id', (req, res) => {
     });
 });
 
+// Go to edit product page
+app.get('/products/edit-product/:id', (req, res) => {
+  const { id } = req.params;
+  Product.findById(id)
+    .then((result) => {
+      res.render('edit-product', { product: result });
+    })
+    .catch((err) => {
+      console.log(`Edit product error: ${err}`);
+    });
+});
+
 // Delete product
 app.delete('/products/:id', (req, res) => {
   console.log('delete called');

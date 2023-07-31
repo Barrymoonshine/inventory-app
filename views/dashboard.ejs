@@ -30,7 +30,7 @@
           <div><%=product.name%></div>
           <div><%=product.sku%></div>
           <div>
-            <a href="/products/<%= product._id %>">edit</a>
+            <a href="/products/edit-product/<%= product._id %>">edit</a>
             <button id="delete" data-doc="<%= product._id %>">delete</button>
             <a href="/products/<%= product._id %>">view</a>
           </div>
@@ -51,6 +51,7 @@
     const dynamicProdContainer = document.querySelector(
       '.dynamic-products-container'
     );
+
     dynamicProdContainer.addEventListener('click', (e) => {
       const targetElement = e.target.id;
       const endpoint = `/products/${e.target.dataset.doc}`;

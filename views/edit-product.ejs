@@ -4,7 +4,7 @@
   <body>
     <%- include('./partials/nav.ejs')%> Edit product page
     <div class="add-product-content">
-      <form id="edit-product-form">
+      <form class="edit-product-form">
         <label for="name"> Product Name:</label>
         <input
           type="text"
@@ -22,7 +22,7 @@
           required
         />
         <label for="description"> Product Description:</label>
-        <textarea id="body" name="description" required>
+        <textarea id="description" name="description" required>
         <%= product.description %>
         </textarea>
         <label for="cost"> Cost:</label>
@@ -70,4 +70,24 @@
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>
+  <script>
+    const editProdForm = document.querySelector('.edit-product-form');
+
+    const getValue = (input) => document.getElementById(`${input}`).value;
+
+    editProdForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const inStockBoolean = getValue('in-stock') === 'on';
+      const formData = {
+        name: getValue('name'),
+        sku: getValue('sku'),
+        description: getValue('description'),
+        cost: getValue('cost'),
+        inStock: inStockBoolean,
+        quantity: getValue('quantity'),
+        category: getValue('category'),
+      };
+      console.log('formData', formData);
+    });
+  </script>
 </html>
