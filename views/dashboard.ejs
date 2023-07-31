@@ -6,7 +6,10 @@
     <div class="dashboard-container">
       <div class="dashboard-stats">
         <div class="stat-top-row">
-          <div class="stat">Total Products</div>
+          <div class="stat">
+            Total Products: <%= products.reduce((acc,curr) => acc +
+            curr.quantity, 0) %>
+          </div>
           <div class="stat">Total Store Value</div>
         </div>
         <div class="stat-bottom-row">
