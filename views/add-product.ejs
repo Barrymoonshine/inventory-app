@@ -21,7 +21,7 @@
           required
         />
         <label for="in stock"> In Stock:</label>
-        <input type="checkbox" id="in-stock" name="inStock" />
+        <input type="checkbox" id="in-stock" name="inStock" checked="true" />
         <label for="name"> Quantity:</label>
         <input type="number" id="quantity" name="quantity" required />
         <label for="category"> Category:</label>
@@ -31,4 +31,14 @@
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>
+  <script>
+    const inStock = document.getElementById('in-stock');
+    const quantityInput = document.getElementById('quantity');
+
+    inStock.addEventListener('click', () => {
+      inStock.checked
+        ? ((quantityInput.value = '0'), (quantityInput.disabled = false))
+        : ((quantityInput.value = '0'), (quantityInput.disabled = true));
+    });
+  </script>
 </html>

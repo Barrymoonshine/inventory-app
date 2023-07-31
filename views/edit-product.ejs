@@ -74,23 +74,27 @@
   </body>
   <script>
     const editProdForm = document.querySelector('.edit-product-form');
+    const inStock = document.getElementById('in-stock');
+    const quantityInput = document.getElementById('quantity');
 
     const getValue = (input) => document.getElementById(`${input}`).value;
+
+    inStock.addEventListener('click', () => {
+      inStock.checked
+        ? ((quantityInput.value = '0'), (quantityInput.disabled = false))
+        : ((quantityInput.value = '0'), (quantityInput.disabled = true));
+    });
 
     editProdForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const endpoint = `/products/${e.target.dataset.doc}`;
-      console.log(getValue('in-stock'));
-      const inStockBoolean =
-        document.getElementById('in-stock').checked === 'on';
-      console.log('cost', getValue('cost'));
       const formData = {
         _id: e.target.dataset.doc,
         name: getValue('name'),
         sku: getValue('sku'),
         description: getValue('description'),
         cost: getValue('cost'),
-        inStock: inStockBoolean,
+        inStock: inStock.checked,
         quantity: getValue('quantity'),
         category: getValue('category'),
       };
