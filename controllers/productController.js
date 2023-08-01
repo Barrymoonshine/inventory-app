@@ -6,7 +6,11 @@ const product_get_view = async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     const categories = await Category.find().sort({ createdAt: -1 });
-    res.render('product-details', { product, categories });
+    res.render('product-details', {
+      product,
+      categories,
+      styles: 'product-details',
+    });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
   }
@@ -17,7 +21,7 @@ const product_get_edit = async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     const categories = await Category.find().sort({ createdAt: -1 });
-    res.render('edit-product', { product, categories });
+    res.render('edit-product', { product, categories, styles: 'edit-product' });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
   }

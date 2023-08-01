@@ -33,7 +33,7 @@ app.use('/products', productRoutes);
 
 // Render views
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { styles: 'index' });
 });
 
 app.get('/dashboard', async (req, res) => {
@@ -48,26 +48,26 @@ app.get('/dashboard', async (req, res) => {
 app.get('/add-product', async (req, res) => {
   try {
     const result = await Category.find().sort({ createdAt: -1 });
-    res.render('add-product', { categories: result });
+    res.render('add-product', { categories: result, styles: 'add-product' });
   } catch (err) {
     console.log(`Mongoose find error: ${err}`);
   }
 });
 
 app.get('/add-category', (req, res) => {
-  res.render('add-category');
+  res.render('add-category', { styles: 'add-category' });
 });
 
 app.post('/categories', async (req, res) => {
   try {
     const category = new Category({ ...req.body });
     await category.save();
-    res.redirect('/dashboard');
+    res.redirect('/dashboard', { styles: 'dashboard' });
   } catch (err) {
     console.log(`Mongo DB add to DB error: ${err}`);
   }
 });
 
 app.use((req, res) => {
-  res.status(404).render('404');
+  res.status(404).render('404', { styles: 'dashboard' });
 });

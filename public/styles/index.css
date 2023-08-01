@@ -1,0 +1,36 @@
+.home-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  gap: 50px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 25px;
+}
+
+.start-link {
+  font-size: 25px;
+  border: solid 1.5px #44403c;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: none;
+  transition: background-color 500ms;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.start-link:hover {
+  background-color: rgb(195, 248, 235);
+}
+
+.home-img {
+  width: 500px;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}

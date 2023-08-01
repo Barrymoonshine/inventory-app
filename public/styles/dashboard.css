@@ -11,35 +11,54 @@
   justify-self: center;
   display: flex;
   flex-direction: column;
-  width: 50vw;
-  height: 10vh;
+  width: 60vw;
+  height: 20vh;
+  gap: 20px;
+  padding: 20px 0px 60px 0px;
 }
 
 .stat-bottom-row,
 .stat-top-row {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .stat {
-  background-color: red;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  background-color: #fecdd3;
   border: 1px solid black;
-  width: 100%;
+  min-width: 300px;
+  height: 4em;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  text-align: center;
+}
+
+.dashboard-icons {
+  width: 40px;
+  height: 40px;
+  padding: 0px 35px 0px 15px;
 }
 
 .products-table,
 .product-row {
   display: grid;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   grid-template-columns: repeat(8, 1fr);
   width: 1200px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
 }
 
 .table-header {
   font-weight: bold;
   border-bottom: 2px solid #333;
-  padding: 8px;
 }
 
 .product-row {
