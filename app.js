@@ -7,10 +7,9 @@ import productRoutes from './routes/productRoutes.js';
 // Set up Express app
 const app = express();
 
-// Connect to mongoDB
 const dbURI = `mongodb+srv://${process.env.DB_CREDENTIALS}@cluster0.wym9xjg.mongodb.net/?retryWrites=true&w=majority`;
 
-// Listen for requests
+// Connect to mongoDB and listen for requests
 mongoose
   .connect(dbURI)
   .then((result) => app.listen(3000))
@@ -30,17 +29,19 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/dashboard', async (req, res) => {
+  try {
+    const result = await Product.find().sort({ createdAt: -1 });
+    res.render('dashboard', { products: result });
+  } catch (err) {
+    console.log(`Mongoose find error: ${err}`);
+  }
+});
+
 app.get('/add-product', (req, res) => {
   res.render('add-product');
 });
 
-app.get('/dashboard', (req, res) => {
-  Product.find()
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.render('dashboard', { products: result });
-    })
-    .catch((err) => {
-      console.log(`Mongoose find error: ${err}`);
-    });
+app.get('/add-category', (req, res) => {
+  res.render('add-category');
 });
