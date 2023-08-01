@@ -22,58 +22,6 @@ nav {
   padding-right: 10px;
 }
 
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0px 20px 0px;
-}
-
-.dashboard-stats {
-  align-self: center;
-  justify-self: center;
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  height: 10vh;
-}
-
-.stat-bottom-row,
-.stat-top-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.stat {
-  background-color: red;
-  border: 1px solid black;
-  width: 100%;
-}
-
-.products-table,
-.product-row {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(8, 1fr);
-  width: 1200px;
-}
-
-.table-header {
-  font-weight: bold;
-  border-bottom: 2px solid #333;
-  padding: 8px;
-}
-
-.product-row {
-  padding: 8px;
-}
-
-h3 {
-  color: red;
-}
-
 .add-product-content form {
   max-width: 400px;
   margin: 0 auto;

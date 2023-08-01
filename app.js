@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 app.get('/dashboard', async (req, res) => {
   try {
     const result = await Product.find().sort({ createdAt: -1 });
-    res.render('dashboard', { products: result });
+    res.render('dashboard', { products: result, styles: 'dashboard' });
   } catch (err) {
     console.log(`Mongoose find error: ${err}`);
   }
