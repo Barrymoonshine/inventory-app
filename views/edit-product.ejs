@@ -84,31 +84,32 @@
         : ((quantityInput.value = 0), (quantityInput.disabled = true));
     });
 
-    editProdForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const endpoint = `/products/${e.target.dataset.doc}`;
-      const formData = {
-        _id: e.target.dataset.doc,
-        name: getValue('name'),
-        sku: getValue('sku'),
-        description: getValue('description'),
-        cost: getValue('cost'),
-        inStock: inStock.checked,
-        quantity: getValue('quantity'),
-        category: getValue('category'),
-      };
-      fetch(endpoint, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'PUT',
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
-        .then((data) => (window.location.href = data.redirect))
-        .catch((err) => {
-          console.log(err);
+    editProdForm.addEventListener('submit', async (e) => {
+      try {
+        e.preventDefault();
+        const endpoint = `/products/${e.target.dataset.doc}`;
+        const formData = {
+          _id: e.target.dataset.doc,
+          name: getValue('name'),
+          sku: getValue('sku'),
+          description: getValue('description'),
+          cost: getValue('cost'),
+          inStock: inStock.checked,
+          quantity: getValue('quantity'),
+          category: getValue('category'),
+        };
+        const response = await fetch(endpoint, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: 'PUT',
+          body: JSON.stringify(formData),
         });
+        const data = await response.json();
+        window.location.href = data.redirect;
+      } catch (err) {
+        console.log(err);
+      }
     });
   </script>
 </html>
