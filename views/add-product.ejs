@@ -25,7 +25,15 @@
         <label for="name"> Quantity:</label>
         <input type="number" id="quantity" name="quantity" required />
         <label for="category"> Category:</label>
-        <input type="text" id="category" name="category" required />
+        <select name="category" id="category" required>
+          <% if(categories.length >0 ) { %> <% categories.map((category) => { %>
+          <option value="<%= category.categoryName %>">
+            <%= category.categoryName %>
+          </option>
+          <%})} else {%>
+          <option value="">--Please first add a category--</option>
+          <%}%>
+        </select>
         <button>Submit</button>
       </form>
     </div>

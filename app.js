@@ -2,7 +2,9 @@ import express from 'express';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import Product from './models/products.js';
+import Categories from './models/categories.js';
 import productRoutes from './routes/productRoutes.js';
+import Category from './models/categories.js';
 
 // Set up Express app
 const app = express();
@@ -44,12 +46,27 @@ app.get('/dashboard', async (req, res) => {
   }
 });
 
-app.get('/add-product', (req, res) => {
-  res.render('add-product');
+app.get('/add-product', async (req, res) => {
+  try {
+    const result = await Category.find().sort({ createdAt: -1 });
+    res.render('add-product', { categories: result });
+  } catch (err) {
+    console.log(`Mongoose find error: ${err}`);
+  }
 });
 
 app.get('/add-category', (req, res) => {
   res.render('add-category');
+});
+
+app.post('/categories', async (req, res) => {
+  try {
+    const category = new Category({ ...req.body });
+    await category.save();
+    res.redirect('/dashboard');
+  } catch (err) {
+    console.log(`Mongo DB add to DB error: ${err}`);
+  }
 });
 
 app.use((req, res) => {

@@ -3,9 +3,9 @@
     <%- include('./partials/head.ejs')%>
   <body>
     <%- include('./partials/nav.ejs')%>
-     <form >
+    <form action="/categories" method="POST">
         <label for="name"> Category Name:</label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="categoryName" required />
         <label for="description"> Category Description:</label>
         <textarea id="body" name="description" required></textarea>
         <button>Submit</button>
