@@ -45,7 +45,7 @@
           <div>
             <a href="/products/edit-product/<%= product._id %>">edit</a>
             <button id="delete" data-doc="<%= product._id %>">delete</button>
-            <a href="/products/product-details/<%= product._id %>">view</a>
+            <a href="/products/<%= product._id %>">view</a>
           </div>
           <div><%=`£${product.cost.toFixed(2)}`%></div>
           <div><%=product.quantity%></div>
@@ -65,22 +65,19 @@
       '.dynamic-products-container'
     );
 
-    dynamicProdContainer.addEventListener('click', (e) => {
+    dynamicProdContainer.addEventListener('click', async (e) => {
       const targetElement = e.target.id;
       const endpoint = `/products/${e.target.dataset.doc}`;
-      switch (targetElement) {
-        case 'delete':
-          fetch(endpoint, {
+      if (targetElement === 'delete') {
+        try {
+          const response = await fetch(endpoint, {
             method: 'DELETE',
-          })
-            .then((response) => response.json())
-            .then((data) => (window.location.href = data.redirect))
-            .catch((err) => {
-              console.log(err);
-            });
-          break;
-        default:
-        // Do nothing
+          });
+          const data = await response.json();
+          window.location.href = data.redirect;
+        } catch (err) {
+          console.log(err);
+        }
       }
     });
   </script>
