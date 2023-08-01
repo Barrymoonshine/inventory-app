@@ -51,3 +51,7 @@ app.get('/add-product', (req, res) => {
 app.get('/add-category', (req, res) => {
   res.render('add-category');
 });
+
+app.use((req, res) => {
+  res.status(404).render('404');
+});
