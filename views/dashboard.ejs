@@ -45,7 +45,7 @@
           <div>
             <a href="/products/edit-product/<%= product._id %>">edit</a>
             <button id="delete" data-doc="<%= product._id %>">delete</button>
-            <a href="/products/<%= product._id %>">view</a>
+            <a href="/products/product-details/<%= product._id %>">view</a>
           </div>
           <div><%=`£${product.cost.toFixed(2)}`%></div>
           <div><%=product.quantity%></div>

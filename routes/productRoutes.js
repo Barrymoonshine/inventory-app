@@ -12,7 +12,7 @@ import {
 const routes = express.Router();
 
 // Display selected product to view
-routes.get('/:id', product_get_view);
+routes.get('/product-details/:id', product_get_view);
 
 // Display selected product to edit
 routes.get('/edit-product/:id', product_get_edit);
