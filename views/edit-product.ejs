@@ -81,8 +81,8 @@
 
     inStock.addEventListener('click', () => {
       inStock.checked
-        ? ((quantityInput.value = '0'), (quantityInput.disabled = false))
-        : ((quantityInput.value = '0'), (quantityInput.disabled = true));
+        ? ((quantityInput.value = 0), (quantityInput.disabled = false))
+        : ((quantityInput.value = 0), (quantityInput.disabled = true));
     });
 
     editProdForm.addEventListener('submit', (e) => {
