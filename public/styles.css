@@ -109,3 +109,7 @@ footer {
   width: 100%;
   margin-top: auto;
 }
+
+input[disabled]:hover {
+  cursor: not-allowed;
+}
