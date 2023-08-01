@@ -50,14 +50,13 @@
           value="<%= product.quantity %>"
           required
         />
-        <label for="category"> Category:</label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value="<%= product.category %>"
-          required
-        />
+        <select name="category" id="category" required>
+          <% categories.map((category) => { %>
+          <option value="<%= category.categoryName %>">
+            <%= category.categoryName %>
+          </option>
+          <%}) %>
+        </select>
         <div class="hidden">
           <input
             class="hidden"

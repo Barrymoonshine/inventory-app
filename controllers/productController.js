@@ -1,4 +1,5 @@
 import Product from '../models/products.js';
+import Category from '../models/categories.js';
 
 const product_get_view = async (req, res) => {
   try {
@@ -13,8 +14,9 @@ const product_get_view = async (req, res) => {
 const product_get_edit = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Product.findById(id);
-    res.render('edit-product', { product: result });
+    const product = await Product.findById(id);
+    const categories = await Category.find().sort({ createdAt: -1 });
+    res.render('edit-product', { product, categories });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
   }

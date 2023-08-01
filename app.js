@@ -2,9 +2,8 @@ import express from 'express';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import Product from './models/products.js';
-import Categories from './models/categories.js';
-import productRoutes from './routes/productRoutes.js';
 import Category from './models/categories.js';
+import productRoutes from './routes/productRoutes.js';
 
 // Set up Express app
 const app = express();
