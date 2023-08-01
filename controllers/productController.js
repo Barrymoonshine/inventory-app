@@ -1,59 +1,53 @@
 import Product from '../models/products.js';
 
-const product_get_view = (req, res) => {
-  const { id } = req.params;
-  Product.findById(id)
-    .then((result) => {
-      res.render('edit-product', { product: result });
-    })
-    .catch((err) => {
-      console.log(`Edit product error: ${err}`);
-    });
+const product_get_view = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Product.findById(id);
+    res.render('edit-product', { product: result });
+  } catch (err) {
+    console.log(`Edit product error: ${err}`);
+  }
 };
 
-const product_get_edit = (req, res) => {
-  const { id } = req.params;
-  Product.findById(id)
-    .then((result) => {
-      res.render('edit-product', { product: result });
-    })
-    .catch((err) => {
-      console.log(`Edit product error: ${err}`);
-    });
+const product_get_edit = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Product.findById(id);
+    res.render('edit-product', { product: result });
+  } catch (err) {
+    console.log(`Edit product error: ${err}`);
+  }
 };
 
-const product_delete = (req, res) => {
-  const { id } = req.params;
-  Product.findByIdAndDelete(id)
-    .then((result) => {
-      res.json({ redirect: '/dashboard' });
-    })
-    .catch((err) => {
-      console.log(`Display product error: ${err}`);
-    });
+const product_delete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.json({ redirect: '/dashboard' });
+  } catch (err) {
+    console.log(`Display product error: ${err}`);
+  }
 };
 
-const product_post = (req, res) => {
-  const inStockBoolean = req.body.inStock === 'on';
-  const product = new Product({ ...req.body, inStock: inStockBoolean });
-  product
-    .save()
-    .then((result) => {
-      res.redirect('/dashboard');
-    })
-    .catch((err) => {
-      console.log(`Mongo DB add to DB error: ${err}`);
-    });
+const product_post = async (req, res) => {
+  try {
+    const inStockBoolean = req.body.inStock === 'on';
+    const product = new Product({ ...req.body, inStock: inStockBoolean });
+    await product.save();
+    res.redirect('/dashboard');
+  } catch (err) {
+    console.log(`Mongo DB add to DB error: ${err}`);
+  }
 };
 
-const product_put = (req, res) => {
-  Product.findByIdAndUpdate(req.body._id, req.body)
-    .then((result) => {
-      res.json({ redirect: '/dashboard' });
-    })
-    .catch((err) => {
-      console.log(`Edit product error: ${err}`);
-    });
+const product_put = async (req, res) => {
+  try {
+    await Product.findByIdAndUpdate(req.body._id, req.body);
+    res.json({ redirect: '/dashboard' });
+  } catch (err) {
+    console.log(`Edit product error: ${err}`);
+  }
 };
 
 export {

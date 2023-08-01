@@ -10,10 +10,16 @@ const app = express();
 const dbURI = `mongodb+srv://${process.env.DB_CREDENTIALS}@cluster0.wym9xjg.mongodb.net/?retryWrites=true&w=majority`;
 
 // Connect to mongoDB and listen for requests
-mongoose
-  .connect(dbURI)
-  .then((result) => app.listen(3000))
-  .catch((err) => console.log(`Mongoose connection error: ${err}`));
+const connectToDb = async () => {
+  try {
+    await mongoose.connect(dbURI);
+    app.listen(3000);
+  } catch (err) {
+    console.log(`Mongoose connection error: ${err}`);
+  }
+};
+
+connectToDb();
 
 // Register view engine (EJS)
 app.set('view engine', 'ejs');
