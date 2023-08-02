@@ -1,0 +1,29 @@
+.add-product-content h2 {
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+
+.add-product-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-product-content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 300px;
+}
+
+.add-product-content button {
+  margin-top: 20px;
+  background: crimson;
+  color: white;
+  padding: 6px;
+  border: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+}

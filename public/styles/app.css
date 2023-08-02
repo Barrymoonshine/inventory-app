@@ -62,29 +62,6 @@ h3 img {
   border-bottom: 1px solid #44403c;
 }
 
-.add-product-content form {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.add-product-content input,
-.add-product-content textarea {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 8px;
-}
-
-.add-product-content button {
-  margin-top: 20px;
-  background: crimson;
-  color: white;
-  padding: 6px;
-  border: 0;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
 .hidden {
   display: none;
 }
