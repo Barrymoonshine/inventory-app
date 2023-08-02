@@ -1,0 +1,29 @@
+.add-category-container h2 {
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+
+.add-category-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-category-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 300px;
+}
+
+.add-category-container button {
+  margin-top: 20px;
+  background: crimson;
+  color: white;
+  padding: 6px;
+  border: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+}
