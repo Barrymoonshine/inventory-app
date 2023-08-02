@@ -27,17 +27,19 @@
         </div>
       </div>
       <div class="search-container">
-        <form action="/dashboard" method="POST">
+        <form class="search-form" action="/dashboard" method="POST">
           <input
             type="search"
             id="product-search"
             name="search"
             placeholder="Search products"
+            required
           />
           <button class="search-button">
             <img src="images/search.png" height="20px" width="20px" />
           </button>
         </form>
+        <a href="/dashboard">All products</a>
       </div>
       <div class="dynamic-products-container">
         <div class="products-table">
@@ -81,7 +83,7 @@
           <div><%=product.category%></div>
         </div>
         <%})} else {%>
-        <p>No products saved</p>
+        <p class="no-prods-found">No products found</p>
         <%}%>
       </div>
     </div>
