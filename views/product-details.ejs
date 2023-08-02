@@ -3,22 +3,25 @@
   <%- include('./partials/head.ejs')%>
   <body>
     <%- include('./partials/nav.ejs')%>
-    <h1>Product details page</h1>
-    <div class="product-details">
-      <h2>Product: <%= product.name %></h2>
-      <p>Availability: <%= product.inStock %></p>
-      <p>SKU: <%= product.sku %></p>
-      <p>Category: <%= product.category %></p>
-      <% categories.map((category)=> { if(category.categoryName ===
-      product.category) {%>
-      <p>Category description: <%= category.description %></p>
-      <% }}) %>
-      <p>Price Per Unit: <%= `£${product.cost.toFixed(2)}` %></p>
-      <p>Quantity <%= product.quantity %></p>
-      <p>Value <%=`£${(product.quantity*product.cost).toFixed(2)}`%></p>
-      <p>Description<%= product.description %></p>
-      <p>Created at:<%= product.createdAt %></p>
-      <p>Last updated:<%= product.updatedAt %></p>
+    <div class="product-details-container">
+      <div class="product-content">
+        <h2><%= product.name %></h2>
+        <p>Availability: <%=product.inStock ? 'In stock' : 'Out of stock'%></p>
+        <p>SKU: <%= product.sku %></p>
+        <p>
+          Category: <% categories.forEach((category) => { if
+          (category.categoryName === product.category) {%>
+          <%=category.categoryName %>
+        </p>
+        <p>Category description: <%= category.description %></p>
+        <% }}) %>
+        <p>Price Per Unit: £ <%= product.price.toFixed(2)%></p>
+        <p>Quantity: <%= product.quantity %></p>
+        <p>Value: £ <%=(product.quantity*product.price).toFixed(2)%></p>
+        <p>Description: <%= product.description %></p>
+        <p>Created at: <%= product.createdAt %></p>
+        <p>Last updated: <%= product.updatedAt %></p>
+      </div>
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>

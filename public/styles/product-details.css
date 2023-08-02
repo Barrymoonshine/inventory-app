@@ -1,0 +1,16 @@
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 75vh;
+}
+
+.product-content {
+  padding: 20px;
+  border: 1px solid #44403c;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: #fafafa;
+}

@@ -11,7 +11,7 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 60vw;
-  height: 10vh;
+  min-height: 10vh;
   gap: 20px;
   padding: 20px;
 }
@@ -22,7 +22,7 @@
   font-size: 18px;
   background-color: #fecdd3;
   border: 1px solid black;
-  min-width: 250px;
+  min-width: 300px;
   height: 4em;
   border-radius: 20px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);

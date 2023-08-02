@@ -2,8 +2,9 @@
 <html lang="en">
   <%- include('./partials/head.ejs')%>
   <body>
-    <%- include('./partials/nav.ejs')%> Edit product page
-    <div class="add-product-content">
+    <%- include('./partials/nav.ejs')%>
+    <div class="edit-product-content">
+      <h2>Edit product</h2>
       <form class="edit-product-form" data-doc="<%= product._id %>">
         <label for="name"> Product Name:</label>
         <input
@@ -50,6 +51,7 @@
           value="<%= product.quantity %>"
           required
         />
+        <label for="name"> Category:</label>
         <select name="category" id="category" required>
           <% categories.map((category) => { %>
           <option value="<%= category.categoryName %>">

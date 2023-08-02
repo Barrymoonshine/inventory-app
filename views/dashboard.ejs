@@ -66,19 +66,19 @@
             <div class="actions-containers">
               <button id="delete" data-doc="<%= product._id %>">
                 <img class="action-icons" src="images/delete.png" />
+                Delete
               </button>
-              Delete
             </div>
             <div class="actions-containers">
-              <a href="/products/<%= product._id %>"
+              <a href="/products/product-details/<%= product._id %>"
                 ><img class="action-icons" src="images/view.png"
               /></a>
               View
             </div>
           </div>
-          <div><%=`£${product.price.toFixed(2)}`%></div>
+          <div>£<%=product.price.toFixed(2)%></div>
           <div><%=product.quantity%></div>
-          <div><%=`£${(product.quantity*product.price).toFixed(2)}`%></div>
+          <div>£<%=(product.quantity*product.price).toFixed(2)%></div>
           <div><%=product.inStock ? 'In stock' : 'Out of stock'%></div>
           <div><%=product.category%></div>
         </div>
