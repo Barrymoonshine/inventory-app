@@ -5,37 +5,32 @@
     <%- include('./partials/nav.ejs')%>
     <div class="dashboard-container">
       <div class="dashboard-stats">
-        <div class="stat-top-row">
-          <div class="stat">
-            <img class="dashboard-icons" src="images/products.png" />
-            Products: <%= products.reduce((acc,curr) => acc + curr.quantity, 0)
-            %>
-          </div>
-          <div class="stat">
-            <img class="dashboard-icons" src="images/store-value.png" />
-            Store Value: £<%= products.reduce((acc,curr) => acc +
-            parseFloat((curr.quantity*curr.price).toFixed(2)),0) %>
-          </div>
+        <div class="stat">
+          <img class="dashboard-icons" src="images/products.png" />
+          Products: <%= products.reduce((acc,curr) => acc + curr.quantity, 0) %>
         </div>
-        <div class="stat-bottom-row">
-          <div class="stat">
-            <img class="dashboard-icons" src="images/out-of-stock.png" />
-            Out of Stock: <%= products.reduce((acc,curr) => acc + !curr.inStock,
-            0) %>
-          </div>
-          <div class="stat">
-            <img class="dashboard-icons" src="images/categories.png" />
-            Categories: <% const categories = []; products.map((product) =>
-            categories.push(product.category)); const uniqueCategories =[...new
-            Set(categories)].length; %> <%= uniqueCategories %>
-          </div>
+        <div class="stat">
+          <img class="dashboard-icons" src="images/store-value.png" />
+          Store Value: £<%= products.reduce((acc,curr) => acc +
+          parseFloat((curr.quantity*curr.price).toFixed(2)),0).toFixed(2) %>
+        </div>
+        <div class="stat">
+          <img class="dashboard-icons" src="images/out-of-stock.png" />
+          Out of Stock: <%= products.reduce((acc,curr) => acc + !curr.inStock,
+          0) %>
+        </div>
+        <div class="stat">
+          <img class="dashboard-icons" src="images/categories.png" />
+          Categories: <% const categories = []; products.map((product) =>
+          categories.push(product.category)); const uniqueCategories =[...new
+          Set(categories)].length; %> <%= uniqueCategories %>
         </div>
       </div>
       <div class="dynamic-products-container">
         <div class="products-table">
           <div class="table-header">Name</div>
           <div class="table-header">SKU</div>
-          <div class="table-header">Actions</div>
+          <div class="table-header-center">Actions</div>
           <div class="table-header">Price</div>
           <div class="table-header">Quantity</div>
           <div class="table-header">Value</div>
@@ -46,15 +41,30 @@
         <div class="product-row">
           <div><%=product.name%></div>
           <div><%=product.sku%></div>
-          <div>
-            <a href="/products/edit-product/<%= product._id %>">edit</a>
-            <button id="delete" data-doc="<%= product._id %>">delete</button>
-            <a href="/products/<%= product._id %>">view</a>
+          <div class="actions-row">
+            <div class="actions-containers">
+              <a href="/products/edit-product/<%= product._id %>"
+                ><img class="action-icons" src="images/edit.png" />
+              </a>
+              Edit
+            </div>
+            <div class="actions-containers">
+              <button id="delete" data-doc="<%= product._id %>">
+                <img class="action-icons" src="images/delete.png" />
+              </button>
+              Delete
+            </div>
+            <div class="actions-containers">
+              <a href="/products/<%= product._id %>"
+                ><img class="action-icons" src="images/view.png"
+              /></a>
+              View
+            </div>
           </div>
           <div><%=`£${product.price.toFixed(2)}`%></div>
           <div><%=product.quantity%></div>
           <div><%=`£${(product.quantity*product.price).toFixed(2)}`%></div>
-          <div><%=product.inStock%></div>
+          <div><%=product.inStock ? 'In stock' : 'Out of stock'%></div>
           <div><%=product.category%></div>
         </div>
         <%})} else {%>

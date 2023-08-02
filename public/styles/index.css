@@ -6,7 +6,8 @@
   gap: 50px;
 }
 
-h4 {
+.left-home-container h4 {
+  margin-top: 0px;
   font-size: 30px;
 }
 
@@ -33,4 +34,5 @@ h5 {
   height: 300px;
   border-radius: 20px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin-top: 20px;
 }
