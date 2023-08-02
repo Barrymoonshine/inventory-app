@@ -11,9 +11,9 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 60vw;
-  height: 20vh;
+  height: 10vh;
   gap: 20px;
-  padding: 20px 40px 30px 40px;
+  padding: 20px;
 }
 
 .stat {
@@ -35,9 +35,42 @@
   padding: 0px 15px 0px 15px;
 }
 
+.search-container {
+  width: 80vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px 30px 0px;
+}
+
+#site-search {
+  padding: 10px;
+  border-radius: 10px;
+  vertical-align: middle;
+  margin: 0px 10px 10px 0px;
+  border: 1px solid #44403c;
+}
+
+#site-search:focus {
+  box-shadow: 0px 0px 10px #d8f8f1;
+  border: 1px solid #44403c;
+}
+
+.search-button {
+  padding: 5px;
+  border: 1px solid transparent;
+}
+
+.search-button:hover {
+  border: 1px solid #44403c;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
 .dynamic-products-container {
   max-height: 500px;
   overflow: auto;
+  width: 80vw;
 }
 
 .products-table,
@@ -46,7 +79,6 @@
   align-items: center;
   justify-content: center;
   grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
-  width: 1200px;
   background-color: rgb(255, 255, 255);
   padding: 10px;
 }
@@ -93,14 +125,6 @@
 .action-icons {
   width: 20px;
   height: 20px;
-}
-
-#delete {
-  padding: 0;
-  border: none;
-  background: none;
-  font-family: 'Jost', sans-serif;
-  color: #44403c;
 }
 
 #delete:hover {

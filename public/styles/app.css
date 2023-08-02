@@ -22,6 +22,14 @@ a {
   color: #44403c;
 }
 
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Jost', sans-serif;
+  color: #44403c;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
