@@ -1,0 +1,32 @@
+.delete-product-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete-form input {
+  width: 300px;
+  height: 20px;
+}
+
+#delete {
+  margin-top: 10px;
+  padding: 10px 20px 10px 20px;
+  background-color: #fca5a5;
+  font-size: 30px;
+  border-radius: 20px;
+}
+
+#delete:hover {
+  cursor: pointer;
+  background-color: #ff8585;
+}
