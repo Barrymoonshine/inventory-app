@@ -1,5 +1,5 @@
 import express from 'express';
-import multer from 'multer';
+import upload from '../services/mutler.js';
 import Product from '../models/products.js';
 import {
   product_get_view,
@@ -8,17 +8,6 @@ import {
   product_post,
   product_put,
 } from '../controllers/productController.js';
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + file.originalname);
-  },
-});
-
-const upload = multer({ storage });
 
 // Set up an Express router, router has to be used inside an app
 const routes = express.Router();
