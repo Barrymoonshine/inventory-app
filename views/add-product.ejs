@@ -5,9 +5,17 @@
     <%- include('./partials/nav.ejs')%>
     <div class="add-product-content">
       <h2>Add a new product</h2>
-      <form action="/products" method="POST">
+      <form action="/products" method="POST" enctype="multipart/form-data">
         <label for="name"> Product Name:</label>
         <input type="text" id="name" name="name" required />
+        <label for="image"> Product image:</label>
+        <input
+          type="file"
+          id="product-image"
+          name="productImage"
+          accept="image/png, image/jpeg"
+          placeholder="File type .jpeg and .png accepted"
+        />
         <label for="name"> Stock Keeping Unit (SKU): </label>
         <input type="text" id="sku" name="sku" required />
         <label for="description"> Product Description:</label>
