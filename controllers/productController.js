@@ -27,6 +27,16 @@ const product_get_edit = async (req, res) => {
   }
 };
 
+const product_get_delete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.render('delete-product', { product, styles: 'delete-product' });
+  } catch (err) {
+    console.log(`Edit product error: ${err}`);
+  }
+};
+
 const product_delete = async (req, res) => {
   try {
     const { id } = req.params;
@@ -64,6 +74,7 @@ const product_put = async (req, res) => {
 export {
   product_get_view,
   product_get_edit,
+  product_get_delete,
   product_delete,
   product_post,
   product_put,

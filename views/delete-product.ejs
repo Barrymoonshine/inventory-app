@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs')%>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+    <div class="delete-product-content">
+      <h2>Are you sure you want to delete <%=product.name %> ?</h2>
+      <form class="delete-form" data-doc="<%= product._id %>">
+        <label for="name"> Enter Admin password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Password"
+        />
+        <button id="delete">Delete</button>
+      </form>
+    </div>
+    <%- include('./partials/footer.ejs')%>
+  </body>
+  <script>
+    const deleteForm = document.querySelector('.delete-form');
+
+    deleteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const endpoint = `/products/${e.target.dataset.doc}`;
+      try {
+        const response = await fetch(endpoint, {
+          method: 'DELETE',
+          headers: {
+            authorisation: `${document.getElementById('password').value}`,
+          },
+        });
+        const data = await response.json();
+        window.location.href = data.redirect;
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  </script>
+</html>

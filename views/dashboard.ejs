@@ -64,10 +64,10 @@
               Edit
             </div>
             <div class="actions-containers">
-              <button id="delete" data-doc="<%= product._id %>">
-                <img class="action-icons" src="images/delete.png" />
-                Delete
-              </button>
+              <a href="/products/delete-product/<%= product._id %>"
+                ><img class="action-icons" src="images/delete.png"
+              /></a>
+              Delete
             </div>
             <div class="actions-containers">
               <a href="/products/product-details/<%= product._id %>"
@@ -89,25 +89,4 @@
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>
-  <script>
-    const dynamicProdContainer = document.querySelector(
-      '.dynamic-products-container'
-    );
-
-    dynamicProdContainer.addEventListener('click', async (e) => {
-      const targetElement = e.target.id;
-      const endpoint = `/products/${e.target.dataset.doc}`;
-      if (targetElement === 'delete') {
-        try {
-          const response = await fetch(endpoint, {
-            method: 'DELETE',
-          });
-          const data = await response.json();
-          window.location.href = data.redirect;
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    });
-  </script>
 </html>
