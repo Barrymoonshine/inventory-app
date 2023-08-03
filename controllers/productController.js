@@ -38,18 +38,12 @@ const product_delete = async (req, res) => {
 };
 
 const product_post = async (req, res) => {
-  console.log('req.file', req.file);
-  const productImage = {
-    data: req.file.path,
-    contentType: req.file.mimetype,
-  };
-  console.log('productImage', productImage);
   try {
     const inStockBoolean = req.body.inStock === 'on';
     const product = new Product({
       ...req.body,
       inStock: inStockBoolean,
-      productImage,
+      productImage: req.file.path,
     });
     await product.save();
     res.redirect('/dashboard');

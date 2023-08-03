@@ -75,6 +75,10 @@ footer {
   margin-top: auto;
 }
 
-input[disabled]:hover {
+input[readonly] {
+  background-color: #c5c1bd;
+}
+
+input[readonly]:hover {
   cursor: not-allowed;
 }

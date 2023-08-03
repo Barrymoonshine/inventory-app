@@ -34,8 +34,8 @@ const productsSchema = new Schema(
       required: true,
     },
     productImage: {
-      data: Buffer,
-      contentType: String,
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

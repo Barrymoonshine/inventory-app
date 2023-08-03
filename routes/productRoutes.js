@@ -1,6 +1,4 @@
 import express from 'express';
-import upload from '../services/mutler.js';
-import Product from '../models/products.js';
 import {
   product_get_view,
   product_get_edit,
@@ -8,6 +6,7 @@ import {
   product_post,
   product_put,
 } from '../controllers/productController.js';
+import upload from '../services/mutler.js';
 
 // Set up an Express router, router has to be used inside an app
 const routes = express.Router();
