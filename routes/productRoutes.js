@@ -9,7 +9,16 @@ import {
   product_put,
 } from '../controllers/productController.js';
 
-const upload = multer({ dest: 'public/uploads/' });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 // Set up an Express router, router has to be used inside an app
 const routes = express.Router();

@@ -38,9 +38,10 @@ const product_delete = async (req, res) => {
 };
 
 const product_post = async (req, res) => {
+  console.log('req.file', req.file);
   const productImage = {
     data: req.file.path,
-    contentType: 'image/png, image/jpeg',
+    contentType: req.file.mimetype,
   };
   console.log('productImage', productImage);
   try {
