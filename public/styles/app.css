@@ -79,6 +79,11 @@ input[readonly] {
   background-color: #c5c1bd;
 }
 
+input {
+  height: 25px;
+  width: 100%;
+}
+
 input[readonly]:hover {
   cursor: not-allowed;
 }
