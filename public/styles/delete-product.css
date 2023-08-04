@@ -21,12 +21,16 @@
 #delete {
   margin-top: 10px;
   padding: 10px 20px 10px 20px;
-  background-color: #fca5a5;
+  background-color: #f77d7d;
   font-size: 30px;
   border-radius: 20px;
 }
 
 #delete:hover {
   cursor: pointer;
-  background-color: #ff8585;
+  background-color: #dc2626;
+}
+
+.password-warning {
+  color: #dc2626;
 }
