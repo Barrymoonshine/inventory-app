@@ -4,7 +4,7 @@
   <body>
     <%- include('./partials/nav.ejs')%>
     <div class="edit-product-content">
-      <h2>Edit <%= product.name %></h2>
+      <h2>Edit: <%= product.name %></h2>
       <p><img src="/<%= product.productImage.slice(7) %>" /></p>
       <form class="edit-product-form" data-doc="<%= product._id %>">
         <label for="name"> Product Name:</label>
@@ -76,6 +76,16 @@
           required
           placeholder="Password"
         />
+        <div class="hidden">
+          <input
+            class="hidden"
+            type="text"
+            name="productId"
+            value="<%= product._id %>"
+            required
+          />
+        </div>
+        <div class="password-warning hidden">Please enter a valid password</div>
         <button>Submit</button>
       </form>
     </div>
@@ -86,6 +96,7 @@
     const inStock = document.getElementById('in-stock');
     const quantityInput = document.getElementById('quantity');
     const productImgUpload = document.getElementById('product-image-upload');
+    const passwordWarning = document.querySelector('.password-warning');
 
     console.log();
     const getValue = (input) => document.getElementById(`${input}`).value;
@@ -122,7 +133,11 @@
           },
         });
         const data = await response.json();
-        window.location.href = data.redirect;
+        console.log('data', data);
+        data.message === 'Unauthorized'
+          ? (passwordWarning.className = 'password-warning')
+          : (passwordWarning.className = 'password-warning hidden'),
+          (window.location.href = data.redirect);
       } catch (err) {
         console.log(err);
       }
