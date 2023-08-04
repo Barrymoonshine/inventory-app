@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 // Middleware
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Temp remove to experiment with put request and FormData object app.use(express.json());
 app.use('/products', productRoutes);
 
 // Render views

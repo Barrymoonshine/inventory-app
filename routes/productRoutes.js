@@ -33,6 +33,6 @@ routes.delete(
 routes.post('/', upload.single('productImage'), product_post);
 
 // Edit product in DB
-routes.put('/:id', product_put);
+routes.put('/:id', upload.single('productImage'), product_put);
 
 export default routes;
