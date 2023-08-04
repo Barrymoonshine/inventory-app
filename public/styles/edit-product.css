@@ -24,10 +24,14 @@
 
 .edit-product-content button {
   margin-top: 20px;
-  background: crimson;
+  background: #dc2626;
   color: white;
   padding: 6px;
   border: 0;
   font-size: 1.2em;
   cursor: pointer;
+}
+
+.password-warning {
+  color: #dc2626;
 }

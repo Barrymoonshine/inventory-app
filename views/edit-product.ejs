@@ -97,6 +97,7 @@
     const quantityInput = document.getElementById('quantity');
     const productImgUpload = document.getElementById('product-image-upload');
     const passwordWarning = document.querySelector('.password-warning');
+    const passwordInput = document.getElementById('password');
 
     console.log();
     const getValue = (input) => document.getElementById(`${input}`).value;
@@ -135,9 +136,11 @@
         const data = await response.json();
         console.log('data', data);
         data.message === 'Unauthorized'
-          ? (passwordWarning.className = 'password-warning')
-          : (passwordWarning.className = 'password-warning hidden'),
-          (window.location.href = data.redirect);
+          ? ((passwordWarning.className = 'password-warning'),
+            (passwordInput.style.border = ' 1px solid #dc2626'))
+          : ((passwordWarning.className = 'password-warning hidden'),
+            (passwordInput.style.border = ''),
+            (window.location.href = data.redirect));
       } catch (err) {
         console.log(err);
       }
