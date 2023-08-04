@@ -6,8 +6,8 @@ import {
 
 const routes = express.Router();
 
-routes.get('/add-category', category_add);
+routes.get('/', category_add);
 
-routes.post('/categories', category_post);
+routes.post('/', category_post);
 
 export default routes;
