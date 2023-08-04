@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./partials/head.ejs')%>
+  <%- include('../partials/head.ejs')%>
   <body>
-    <%- include('./partials/nav.ejs')%>
+    <%- include('../partials/nav.ejs')%>
     <div class="add-product-content">
       <h2>Add a new product</h2>
       <form action="/products" method="POST" enctype="multipart/form-data">
@@ -46,7 +46,7 @@
         <button>Submit</button>
       </form>
     </div>
-    <%- include('./partials/footer.ejs')%>
+    <%- include('../partials/footer.ejs')%>
   </body>
   <script>
     const inStock = document.getElementById('in-stock');

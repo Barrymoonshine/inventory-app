@@ -58,15 +58,6 @@ app.post('/dashboard', async (req, res) => {
   }
 });
 
-app.get('/add-product', async (req, res) => {
-  try {
-    const result = await Category.find().sort({ createdAt: -1 });
-    res.render('add-product', { categories: result, styles: 'add-product' });
-  } catch (err) {
-    console.log(`Mongoose find error: ${err}`);
-  }
-});
-
 app.get('/add-category', (req, res) => {
   res.render('add-category', { styles: 'add-category' });
 });

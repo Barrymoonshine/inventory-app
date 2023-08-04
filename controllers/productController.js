@@ -1,15 +1,27 @@
 import Product from '../models/products.js';
 import Category from '../models/categories.js';
 
+const product_add = async (req, res) => {
+  try {
+    const result = await Category.find().sort({ createdAt: -1 });
+    res.render('products/add-product', {
+      categories: result,
+      styles: 'products/add-product',
+    });
+  } catch (err) {
+    console.log(`Mongoose find error: ${err}`);
+  }
+};
+
 const product_get_view = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
     const categories = await Category.find().sort({ createdAt: -1 });
-    res.render('product-details', {
+    res.render('products/product-details', {
       product,
       categories,
-      styles: 'product-details',
+      styles: 'products/product-details',
     });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
@@ -21,7 +33,11 @@ const product_get_edit = async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     const categories = await Category.find().sort({ createdAt: -1 });
-    res.render('edit-product', { product, categories, styles: 'edit-product' });
+    res.render('products/edit-product', {
+      product,
+      categories,
+      styles: 'products/edit-product',
+    });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
   }
@@ -31,7 +47,10 @@ const product_get_delete = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('delete-product', { product, styles: 'delete-product' });
+    res.render('products/delete-product', {
+      product,
+      styles: 'products/delete-product',
+    });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
   }
@@ -75,6 +94,7 @@ const product_put = async (req, res) => {
 };
 
 export {
+  product_add,
   product_get_view,
   product_get_edit,
   product_get_delete,

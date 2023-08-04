@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./partials/head.ejs')%>
+  <%- include('../partials/head.ejs')%>
   <body>
-    <%- include('./partials/nav.ejs')%>
+    <%- include('../partials/nav.ejs')%>
     <div class="edit-product-content">
       <h2>Edit: <%= product.name %></h2>
       <p><img src="/<%= product.productImage.slice(7) %>" /></p>
@@ -89,7 +89,7 @@
         <button>Submit</button>
       </form>
     </div>
-    <%- include('./partials/footer.ejs')%>
+    <%- include('../partials/footer.ejs')%>
   </body>
   <script>
     const editProdForm = document.querySelector('.edit-product-form');
