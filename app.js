@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import Product from './models/products.js';
 import Category from './models/categories.js';
 import productRoutes from './routes/productRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
 
 // Set up Express app
 const app = express();
@@ -30,6 +31,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 // Temp remove to experiment with put request and FormData object app.use(express.json());
 app.use('/products', productRoutes);
+app.use('/categories', categoryRoutes);
 
 // Render views
 app.get('/', (req, res) => {
