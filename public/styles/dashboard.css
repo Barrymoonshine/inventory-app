@@ -38,7 +38,7 @@
 .search-container {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 70vw;
   align-items: flex-end;
   padding-bottom: 20px;
 }
@@ -91,16 +91,16 @@
 .dynamic-products-container {
   max-height: 500px;
   overflow: auto;
-  width: 80vw;
+  max-width: 80vw;
+  background-color: rgb(255, 255, 255);
 }
 
 .products-table,
 .product-row {
   display: grid;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   grid-template-columns: 140px 140px 300px 140px 140px 140px 140px 140px;
-  background-color: rgb(255, 255, 255);
   padding: 10px;
 }
 
@@ -160,4 +160,7 @@
 
 .no-prods-found {
   text-align: center;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  margin-top: 0px;
 }
