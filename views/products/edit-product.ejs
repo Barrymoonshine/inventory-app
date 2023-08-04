@@ -76,15 +76,6 @@
           required
           placeholder="Password"
         />
-        <div class="hidden">
-          <input
-            class="hidden"
-            type="text"
-            name="productId"
-            value="<%= product._id %>"
-            required
-          />
-        </div>
         <div class="password-warning hidden">Please enter a valid password</div>
         <button>Submit</button>
       </form>
@@ -99,7 +90,6 @@
     const passwordWarning = document.querySelector('.password-warning');
     const passwordInput = document.getElementById('password');
 
-    console.log();
     const getValue = (input) => document.getElementById(`${input}`).value;
 
     inStock.addEventListener('click', () => {

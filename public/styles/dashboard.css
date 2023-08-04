@@ -38,9 +38,8 @@
 .search-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-self: flex-end;
-  width: 25vw;
+  width: 80vw;
+  align-items: flex-end;
   padding-bottom: 20px;
 }
 
@@ -53,8 +52,9 @@
   border: solid 1px #44403c;
   border-radius: 8px;
   padding: 5px;
+  margin-right: 140px;
   background-color: transparent;
-  width: 70px;
+  width: 90px;
   transition: background-color 500ms;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
@@ -99,7 +99,7 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 140px 140px 300px 140px 140px 140px 140px 140px;
   background-color: rgb(255, 255, 255);
   padding: 10px;
 }
