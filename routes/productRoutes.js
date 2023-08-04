@@ -33,6 +33,11 @@ routes.delete(
 routes.post('/', upload.single('productImage'), product_post);
 
 // Edit product in DB
-routes.put('/:id', upload.single('productImage'), product_put);
+routes.put(
+  '/:id',
+  passwordChecker(process.env.ADMIN_PASSWORD),
+  upload.single('productImage'),
+  product_put
+);
 
 export default routes;
