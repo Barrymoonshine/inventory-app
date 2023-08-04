@@ -28,9 +28,9 @@ app.use('/add-category', categoryRoutes);
 app.use('/dashboard', dashboardRoutes);
 
 app.get('/', (req, res) => {
-  res.render('index', { styles: 'index' });
+  res.render('home', { styles: 'home' });
 });
 
 app.use((req, res) => {
-  res.status(404).render('404', { styles: 'dashboard' });
+  res.status(404).render('404', { styles: '404' });
 });
