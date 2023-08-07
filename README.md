@@ -25,7 +25,7 @@ This app was built using Node JS, Express, Mongoose, Mongo DB Atlas, Mutler and 
 
 - Created and configured database collections using Mongo DB Atlas and Mongoose Schemas
 - Making asynchronous calls to the database using Mongoose methods such as `find`, `save` and `findByIdAndDelete`
-- Using the `dotenv` npm package to securely store and access database credentials on the environment variable
+- Using the 'dotenv' npm package to securely store and access database credentials on the environment variable
 - Uploaded files using the 'Mutler' package to store an entry in the data base with the location of image saved in the public directory
 
 **EJS**

@@ -10,6 +10,7 @@ import {
 } from '../controllers/productController.js';
 import upload from '../services/mutler.js';
 import passwordChecker from '../services/passwordChecker.js';
+import { addProdValidationRules, validate } from '../services/validator.js';
 
 const routes = express.Router();
 
@@ -27,7 +28,13 @@ routes.delete(
   product_delete
 );
 
-routes.post('/', upload.single('productImage'), product_post);
+routes.post(
+  '/',
+  upload.single('productImage'),
+  addProdValidationRules(),
+  validate,
+  product_post
+);
 
 routes.put(
   '/:id',
