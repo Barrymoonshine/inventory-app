@@ -5,7 +5,7 @@
     <%- include('../partials/nav.ejs')%>
     <div class="add-product-content">
       <h2>Add a new product</h2>
-      <form action="/products" method="POST" enctype="multipart/form-data">
+      <form class="add-prod-form">
         <label for="name"> Product Name:</label>
         <input type="text" id="name" name="name" required />
         <label for="image"> Product image:</label>
@@ -48,8 +48,23 @@
     <%- include('../partials/footer.ejs')%>
   </body>
   <script>
+    const addProdForm = document.querySelector('.add-prod-form');
     const inStock = document.getElementById('in-stock');
     const quantityInput = document.getElementById('quantity');
+
+    addProdForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const response = await fetch('/products', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            authorisation: `${document.getElementById('password').value}`,
+          },
+        });
+
+
+    })
 
     inStock.addEventListener('click', () => {
       inStock.checked
