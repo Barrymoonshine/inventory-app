@@ -73,9 +73,10 @@
         window.location.href = data.redirect;
       } else {
         console.log('data', data);
-        // Loop through all error messages and clear previous errors
+        // Clear previous error messages
         Array.from(errorMessages).map((msg) => (msg.textContent = ''));
 
+        // Add new error messages
         data.forEach((err) => {
           const element = document.querySelector(`.${err.path}-error`);
           element.textContent = err.msg;

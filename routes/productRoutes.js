@@ -8,9 +8,12 @@ import {
   product_post,
   product_put,
 } from '../controllers/productController.js';
-import upload from '../services/mutler.js';
-import passwordChecker from '../services/passwordChecker.js';
-import { addProdValidationRules, validate } from '../services/validator.js';
+import upload from '../middleware/mutler.js';
+import {
+  addProdValidation,
+  editProdValidation,
+  validate,
+} from '../middleware/validator.js';
 
 const routes = express.Router();
 
@@ -24,22 +27,23 @@ routes.get('/delete-product/:id', product_get_delete);
 
 routes.delete(
   '/:id',
-  passwordChecker(process.env.ADMIN_PASSWORD),
+  // passwordChecker(process.env.ADMIN_PASSWORD),
   product_delete
 );
 
 routes.post(
   '/',
   upload.single('productImage'),
-  addProdValidationRules(),
+  addProdValidation(),
   validate,
   product_post
 );
 
 routes.put(
   '/:id',
-  passwordChecker(process.env.ADMIN_PASSWORD),
   upload.single('productImage'),
+  editProdValidation(),
+  validate,
   product_put
 );
 

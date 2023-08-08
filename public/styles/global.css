@@ -66,6 +66,11 @@ h3 img {
   display: none;
 }
 
+.errors {
+  color: #dc2626;
+  font-size: 12px;
+}
+
 footer {
   font-size: 15px;
   padding: 50px 0 20px 0;
