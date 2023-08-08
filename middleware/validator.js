@@ -14,7 +14,8 @@ const addProdValidation = () => [
     .isNumeric()
     .notEmpty()
     .custom((value) => {
-      if (value !== 0 && value !== 0.0) {
+      // Gotcha - req.body parses all input fields as strings by default!
+      if (value === '0' || value === '0.0' || value === '0.00') {
         return false;
       }
       return true;
@@ -44,7 +45,7 @@ const editProdValidation = () => [
     .isNumeric()
     .notEmpty()
     .custom((value) => {
-      if (value !== 0 && value !== 0.0) {
+      if (value === '0' || value === '0.0' || value === '0.00') {
         return false;
       }
       return true;

@@ -60,29 +60,30 @@
     const errorMessages = document.querySelectorAll('.errors');
 
     addProdForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      try {
+        e.preventDefault();
 
-      const response = await fetch('/products', {
-        method: 'POST',
-        body: new FormData(e.target),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        window.location.href = data.redirect;
-      } else {
-        console.log('data', data);
-        // Clear previous error messages
-        Array.from(errorMessages).map((msg) => (msg.textContent = ''));
-
-        // Add new error messages
-        data.forEach((err) => {
-          const element = document.querySelector(`.${err.path}-error`);
-          element.textContent = err.msg;
-          // Remove hidden class name
-          err.className = `.${err.path}-error errors`;
+        const response = await fetch('/products', {
+          method: 'POST',
+          body: new FormData(e.target),
         });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          window.location.href = data.redirect;
+        } else {
+          // Clear previous error messages
+          Array.from(errorMessages).map((msg) => (msg.textContent = ''));
+
+          // Add new error messages
+          data.forEach((err) => {
+            const element = document.querySelector(`.${err.path}-error`);
+            element.textContent = err.msg;
+          });
+        }
+      } catch (err) {
+        console.log(err);
       }
     });
 
