@@ -14,7 +14,7 @@
           required
           placeholder="Password"
         />
-        <div class="password-warning hidden">Please enter a valid password</div>
+        <div class="password-error errors"></div>
         <button id="delete">Delete</button>
       </form>
     </div>
@@ -22,27 +22,32 @@
   </body>
   <script>
     const deleteForm = document.querySelector('.delete-form');
-    const passwordInput = document.getElementById('password');
-    const passwordWarning = document.querySelector('.password-warning');
+    const passwordError = document.querySelector('.password-error');
 
     deleteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const endpoint = `/products/${e.target.dataset.doc}`;
+
+      const passwordObj = {
+        password: document.getElementById('password').value,
+      };
+
+      const endpoint = `/products/delete-product/${e.target.dataset.doc}`;
       try {
         const response = await fetch(endpoint, {
-          method: 'DELETE',
+          method: 'POST',
           headers: {
-            authorisation: `${document.getElementById('password').value}`,
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify(passwordObj),
         });
+
         const data = await response.json();
-        data.message === 'Unauthorized'
-          ? ((passwordWarning.className = 'password-warning'),
-            (passwordInput.style.border = ' 1px solid #dc2626'))
-          : ((passwordWarning.className = 'password-warning hidden'),
-            (passwordInput.style.border = ''),
-            (window.location.href = data.redirect));
-        window.location.href = data.redirect;
+
+        if (response.ok) {
+          window.location.href = data.redirect;
+        } else {
+          passwordError.textContent = data[0].msg;
+        }
       } catch (err) {
         console.log(err);
       }

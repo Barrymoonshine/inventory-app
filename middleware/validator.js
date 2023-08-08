@@ -66,6 +66,12 @@ const editProdValidation = () => [
     .withMessage('Please enter a valid password'),
 ];
 
+const deleteProdValidation = () => [
+  check('password')
+    .equals(process.env.ADMIN_PASSWORD)
+    .withMessage('Please enter a valid password'),
+];
+
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
@@ -74,4 +80,9 @@ const validate = (req, res, next) => {
   return res.status(422).json(errors.array());
 };
 
-export { addProdValidation, editProdValidation, validate };
+export {
+  addProdValidation,
+  editProdValidation,
+  deleteProdValidation,
+  validate,
+};
