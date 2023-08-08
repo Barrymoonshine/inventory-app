@@ -1,5 +1,7 @@
 import { check, validationResult } from 'express-validator';
 
+// File validation performed by Mutler
+
 const addProdValidation = () => [
   check('name').isString().notEmpty().withMessage('Please enter a valid name'),
   check('sku')
