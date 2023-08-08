@@ -88,10 +88,6 @@ const product_put = async (req, res) => {
       productImage: req.file.path,
     };
     delete updatedProd.password;
-
-    console.log('req.body', req.body);
-    console.log('updatedProd', updatedProd);
-
     await Product.findByIdAndUpdate(req.body._id, updatedProd);
     res.json({ redirect: '/dashboard' });
   } catch (err) {
