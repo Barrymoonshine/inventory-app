@@ -119,6 +119,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
+  background-color: rgb(255, 255, 255);
 }
 
 .table-header-center {

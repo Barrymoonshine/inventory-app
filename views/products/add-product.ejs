@@ -52,19 +52,22 @@
     const inStock = document.getElementById('in-stock');
     const quantityInput = document.getElementById('quantity');
 
-    addProdForm.addEventListener('submit', (e) => {
+    addProdForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const response = await fetch('/products', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            authorisation: `${document.getElementById('password').value}`,
-          },
-        });
+        method: 'POST',
+        body: new FormData(e.target),
+      });
 
+      const data = await response.json();
 
-    })
+      if (response.ok) {
+        window.location.href = data.redirect;
+      } else {
+        console.log('data', data);
+      }
+    });
 
     inStock.addEventListener('click', () => {
       inStock.checked

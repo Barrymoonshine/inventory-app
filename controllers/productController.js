@@ -67,8 +67,6 @@ const product_delete = async (req, res) => {
 };
 
 const product_post = async (req, res) => {
-  console.log('product_post req.body', req.body);
-  console.log('product_post req.file.path', req.file.path);
   try {
     const inStockBoolean = req.body.inStock === 'on';
     const product = new Product({
@@ -77,7 +75,7 @@ const product_post = async (req, res) => {
       productImage: req.file.path,
     });
     await product.save();
-    res.redirect('/dashboard');
+    res.json({ redirect: '/dashboard' });
   } catch (err) {
     console.log(`Mongo DB add to DB error: ${err}`);
   }

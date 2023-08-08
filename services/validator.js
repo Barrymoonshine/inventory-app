@@ -13,7 +13,12 @@ const addProdValidationRules = () => [
   check('price')
     .isNumeric()
     .notEmpty()
-    .custom((value) => value !== 0.0)
+    .custom((value) => {
+      if (value !== 0 && value !== 0.0 && value !== 0.0) {
+        return false;
+      }
+      return true;
+    })
     .withMessage('Price must not be £0.00'),
   check('quantity')
     .isNumeric()
@@ -26,6 +31,7 @@ const addProdValidationRules = () => [
 ];
 
 const validate = (req, res, next) => {
+  console.log('validate called');
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     return next();
