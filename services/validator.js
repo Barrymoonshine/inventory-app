@@ -14,16 +14,16 @@ const addProdValidationRules = () => [
     .isNumeric()
     .notEmpty()
     .custom((value) => {
-      if (value !== 0 && value !== 0.0 && value !== 0.0) {
+      if (value !== 0 && value !== 0.0) {
         return false;
       }
       return true;
     })
-    .withMessage('Price must not be £0.00'),
+    .withMessage('Price must be above £0'),
   check('quantity')
     .isNumeric()
     .notEmpty()
-    .withMessage('Please enter a quantity of 1 or higher'),
+    .withMessage('Please enter a quantity'),
   check('category')
     .isString()
     .notEmpty()
@@ -31,18 +31,11 @@ const addProdValidationRules = () => [
 ];
 
 const validate = (req, res, next) => {
-  console.log('validate called');
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     return next();
   }
-  console.log('Validation errors:', errors.array());
-  const extractedErrors = [];
-  errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
-
-  return res.status(422).json({
-    errors: extractedErrors,
-  });
+  return res.status(422).json(errors.array());
 };
 
 export { addProdValidationRules, validate };

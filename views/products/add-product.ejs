@@ -8,6 +8,7 @@
       <form class="add-prod-form">
         <label for="name"> Product Name:</label>
         <input type="text" id="name" name="name" required />
+        <div class="name-error errors"></div>
         <label for="image"> Product image:</label>
         <input
           type="file"
@@ -17,8 +18,10 @@
         />
         <label for="name"> Stock Keeping Unit (SKU): </label>
         <input type="text" id="sku" name="sku" required />
+        <div class="sku-error errors"></div>
         <label for="description"> Product Description:</label>
         <textarea id="body" name="description" required></textarea>
+        <div class="description-error errors"></div>
         <label for="name"> Price (£):</label>
         <input
           type="number"
@@ -28,10 +31,12 @@
           placeholder="0.00"
           required
         />
+        <div class="price-error errors"></div>
         <label for="in stock"> In Stock:</label>
         <input type="checkbox" id="in-stock" name="inStock" checked="true" />
         <label for="name"> Quantity:</label>
         <input type="number" id="quantity" name="quantity" required />
+        <div class="quantity-error errors"></div>
         <label for="category"> Category:</label>
         <select name="category" id="category" required>
           <% if(categories.length >0 ) { %> <% categories.map((category) => { %>
@@ -42,6 +47,7 @@
           <option value="">--Please first add a category--</option>
           <%}%>
         </select>
+        <div class="category-error errors"></div>
         <button>Submit</button>
       </form>
     </div>
@@ -51,6 +57,7 @@
     const addProdForm = document.querySelector('.add-prod-form');
     const inStock = document.getElementById('in-stock');
     const quantityInput = document.getElementById('quantity');
+    const errorMessages = document.querySelectorAll('.errors');
 
     addProdForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -66,6 +73,15 @@
         window.location.href = data.redirect;
       } else {
         console.log('data', data);
+        // Loop through all error messages and clear previous errors
+        Array.from(errorMessages).map((msg) => (msg.textContent = ''));
+
+        data.forEach((err) => {
+          const element = document.querySelector(`.${err.path}-error`);
+          element.textContent = err.msg;
+          // Remove hidden class name
+          err.className = `.${err.path}-error errors`;
+        });
       }
     });
 
