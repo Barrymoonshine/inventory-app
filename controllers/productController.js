@@ -83,10 +83,16 @@ const product_post = async (req, res) => {
 
 const product_put = async (req, res) => {
   try {
-    await Product.findByIdAndUpdate(req.body._id, {
+    const updatedProd = {
       ...req.body,
       productImage: req.file.path,
-    });
+    };
+    delete updatedProd.password;
+
+    console.log('req.body', req.body);
+    console.log('updatedProd', updatedProd);
+
+    await Product.findByIdAndUpdate(req.body._id, updatedProd);
     res.json({ redirect: '/dashboard' });
   } catch (err) {
     console.log(`Edit product error: ${err}`);

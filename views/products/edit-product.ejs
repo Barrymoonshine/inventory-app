@@ -118,6 +118,7 @@
         formData.append('quantity', `${getValue('quantity')}`);
         formData.append('category', `${getValue('category')}`);
         formData.append('productImage', productImgUpload.files[0]);
+        formData.append('password', `${getValue('password')}`);
 
         const response = await fetch(endpoint, {
           method: 'PUT',

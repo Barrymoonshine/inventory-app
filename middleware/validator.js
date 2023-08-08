@@ -60,7 +60,14 @@ const editProdValidation = () => [
     .notEmpty()
     .withMessage('Please select a value category'),
   check('password')
-    .equals(`${process.env.ADMIN_PASSWORD}`)
+    .custom((value) => {
+      console.log('process.env.ADMIN_PASSWORD', process.env.ADMIN_PASSWORD);
+      console.log('password value', value);
+      if (value === process.env.ADMIN_PASSWORD) {
+        return true;
+      }
+      return false;
+    })
     .withMessage('Please enter a valid password'),
 ];
 
