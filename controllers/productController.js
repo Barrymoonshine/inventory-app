@@ -68,10 +68,8 @@ const product_delete = async (req, res) => {
 
 const product_post = async (req, res) => {
   try {
-    const inStockBoolean = req.body.inStock === 'on';
     const product = new Product({
       ...req.body,
-      inStock: inStockBoolean,
       productImage: req.file.path,
     });
     await product.save();
@@ -87,6 +85,7 @@ const product_put = async (req, res) => {
       ...req.body,
       productImage: req.file.path,
     };
+    // Password added to req.body for validation, but not needed in DB
     delete updatedProd.password;
     await Product.findByIdAndUpdate(req.body._id, updatedProd);
     res.json({ redirect: '/dashboard' });

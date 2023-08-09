@@ -20,7 +20,7 @@
         <input type="text" id="sku" name="sku" required />
         <div class="sku-error errors"></div>
         <label for="description"> Product Description:</label>
-        <textarea id="body" name="description" required></textarea>
+        <textarea id="description" name="description" required></textarea>
         <div class="description-error errors"></div>
         <label for="name"> Price (£):</label>
         <input
@@ -34,6 +34,7 @@
         <div class="price-error errors"></div>
         <label for="in stock"> In Stock:</label>
         <input type="checkbox" id="in-stock" name="inStock" checked="true" />
+        <div class="inStock-error errors"></div>
         <label for="name"> Quantity:</label>
         <input type="number" id="quantity" name="quantity" required />
         <div class="quantity-error errors"></div>
@@ -58,14 +59,27 @@
     const inStock = document.getElementById('in-stock');
     const quantityInput = document.getElementById('quantity');
     const errorMessages = document.querySelectorAll('.errors');
+    const productImgUpload = document.getElementById('product-image');
+
+    const getValue = (input) => document.getElementById(`${input}`).value;
 
     addProdForm.addEventListener('submit', async (e) => {
       try {
         e.preventDefault();
 
+        const formData = new FormData();
+        formData.append('name', getValue('name'));
+        formData.append('productImage', productImgUpload.files[0]);
+        formData.append('sku', getValue('sku'));
+        formData.append('description', getValue('description'));
+        formData.append('price', getValue('price'));
+        formData.append('inStock', inStock.checked);
+        formData.append('quantity', getValue('quantity'));
+        formData.append('category', getValue('category'));
+
         const response = await fetch('/products', {
           method: 'POST',
-          body: new FormData(e.target),
+          body: formData,
         });
 
         const data = await response.json();

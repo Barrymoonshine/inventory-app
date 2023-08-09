@@ -111,13 +111,13 @@
         const formData = new FormData();
         formData.append('_id', e.target.dataset.doc);
         formData.append('name', getValue('name'));
+        formData.append('productImage', productImgUpload.files[0]);
         formData.append('sku', getValue('sku'));
         formData.append('description', getValue('description'));
         formData.append('price', getValue('price'));
         formData.append('inStock', inStock.checked);
         formData.append('quantity', getValue('quantity'));
         formData.append('category', getValue('category'));
-        formData.append('productImage', productImgUpload.files[0]);
         formData.append('password', getValue('password'));
 
         const response = await fetch(endpoint, {

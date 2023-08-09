@@ -23,6 +23,17 @@ const addProdValidation = () => [
       return true;
     })
     .withMessage('Price must be above £0'),
+  check('inStock')
+    .custom((value, { req }) => {
+      if (value === 'true' && req.body.quantity <= '0') {
+        return false;
+      }
+      if (value === 'false') {
+        return true;
+      }
+      return true;
+    })
+    .withMessage('Please enter a quantity above 0'),
   check('quantity')
     .isNumeric()
     .notEmpty()
