@@ -20,7 +20,7 @@
 
 .edit-product-content button {
   margin-top: 20px;
-  background: #dc2626;
+  background-color: #f77d7d;
   color: white;
   padding: 6px;
   border: 0;
@@ -28,6 +28,7 @@
   cursor: pointer;
 }
 
-.password-warning {
-  color: #dc2626;
+.edit-product-content button:hover {
+  cursor: pointer;
+  background-color: #dc2626;
 }

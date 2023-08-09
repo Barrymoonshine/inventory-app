@@ -34,10 +34,10 @@
         <div class="price-error errors"></div>
         <label for="in stock"> In Stock:</label>
         <input type="checkbox" id="in-stock" name="inStock" checked="true" />
-        <div class="inStock-error errors"></div>
         <label for="name"> Quantity:</label>
         <input type="number" id="quantity" name="quantity" required />
         <div class="quantity-error errors"></div>
+        <div class="inStock-error errors"></div>
         <label for="category"> Category:</label>
         <select name="category" id="category" required>
           <% if(categories.length >0 ) { %> <% categories.map((category) => { %>

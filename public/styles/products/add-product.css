@@ -20,10 +20,15 @@
 
 .add-product-content button {
   margin-top: 20px;
-  background: crimson;
+  background-color: #f77d7d;
   color: white;
   padding: 6px;
   border: 0;
   font-size: 1.2em;
   cursor: pointer;
+}
+
+.add-product-content button:hover {
+  cursor: pointer;
+  background-color: #dc2626;
 }
