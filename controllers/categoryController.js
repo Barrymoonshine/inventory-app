@@ -1,7 +1,7 @@
 import Category from '../models/categories.js';
 
 const category_add = async (req, res) => {
-  res.render('add-category', { styles: 'add-category' });
+  res.render('add-category', { styles: 'add-category', script: null });
 };
 
 const category_post = async (req, res) => {

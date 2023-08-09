@@ -7,6 +7,7 @@ const product_add = async (req, res) => {
     res.render('products/add-product', {
       categories: result,
       styles: 'products/add-product',
+      script: 'add-product',
     });
   } catch (err) {
     console.log(`Mongoose find error: ${err}`);
@@ -22,6 +23,7 @@ const product_get_view = async (req, res) => {
       product,
       categories,
       styles: 'products/product-details',
+      script: null,
     });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
@@ -37,6 +39,7 @@ const product_get_edit = async (req, res) => {
       product,
       categories,
       styles: 'products/edit-product',
+      script: 'edit-product',
     });
   } catch (err) {
     console.log(`Edit product error: ${err}`);
@@ -50,6 +53,7 @@ const product_get_delete = async (req, res) => {
     res.render('products/delete-product', {
       product,
       styles: 'products/delete-product',
+      script: 'delete-product',
     });
   } catch (err) {
     console.log(`Edit product error: ${err}`);

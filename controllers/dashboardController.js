@@ -5,7 +5,11 @@ const dashboard_get = async (req, res) => {
     const result = await Product.find().sort({
       createdAt: -1,
     });
-    res.render('dashboard', { products: result, styles: 'dashboard' });
+    res.render('dashboard', {
+      products: result,
+      styles: 'dashboard',
+      script: null,
+    });
   } catch (err) {
     console.log(`Mongoose find error: ${err}`);
   }
@@ -16,7 +20,11 @@ const dashboard_post = async (req, res) => {
     const result = await Product.find({ name: req.body.search }).sort({
       createdAt: -1,
     });
-    res.render('dashboard', { products: result, styles: 'dashboard' });
+    res.render('dashboard', {
+      products: result,
+      styles: 'dashboard',
+      script: null,
+    });
   } catch (err) {
     console.log(`Mongoose find error: ${err}`);
   }
