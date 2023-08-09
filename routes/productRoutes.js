@@ -9,9 +9,8 @@ import {
   product_put,
 } from '../controllers/productController.js';
 import {
-  addProdValidation,
-  editProdValidation,
-  deleteProdValidation,
+  formValidation,
+  passwordValidation,
   validate,
 } from '../middleware/validator.js';
 import upload from '../middleware/mutler.js';
@@ -28,7 +27,7 @@ routes.get('/delete-product/:id', product_get_delete);
 
 routes.post(
   '/delete-product/:id',
-  deleteProdValidation(),
+  passwordValidation(),
   validate,
   product_delete
 );
@@ -36,7 +35,7 @@ routes.post(
 routes.post(
   '/',
   upload.single('productImage'),
-  addProdValidation(),
+  formValidation(),
   validate,
   product_post
 );
@@ -44,7 +43,8 @@ routes.post(
 routes.put(
   '/:id',
   upload.single('productImage'),
-  editProdValidation(),
+  formValidation(),
+  passwordValidation(),
   validate,
   product_put
 );
