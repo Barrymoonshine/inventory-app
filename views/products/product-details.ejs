@@ -6,7 +6,7 @@
     <div class="product-details-container">
       <div class="product-content">
         <h2><%= product.name %></h2>
-        <p><img src="/<%= product.productImage.slice(7) %>" /></p>
+        <p><img src="<%= product.productImage.slice(7) %>" /></p>
         <p>Availability: <%=product.inStock ? 'In stock' : 'Out of stock'%></p>
         <p>SKU: <%= product.sku %></p>
         <p>
