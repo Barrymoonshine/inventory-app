@@ -1,6 +1,6 @@
 # Inventory application
 
-Live link: TBC
+Live link: https://misty-hill-10.fly.dev/
 
 ## Summary
 
