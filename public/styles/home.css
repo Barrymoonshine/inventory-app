@@ -4,19 +4,20 @@
   align-items: center;
   flex-grow: 1;
   gap: 50px;
+  padding: 20px;
 }
 
 .left-home-container h4 {
   margin-top: 0px;
-  font-size: 30px;
+  font-size: calc(10px + 1.3vw);
 }
 
 h5 {
-  font-size: 25px;
+  font-size: calc(8px + 1.25vw);
 }
 
 .start-link {
-  font-size: 25px;
+  font-size: calc(8px + 1.25vw);
   border: solid 1.5px #44403c;
   border-radius: 8px;
   padding: 10px;
@@ -30,8 +31,10 @@ h5 {
 }
 
 .home-img {
-  width: 500px;
-  height: 300px;
+  max-width: 500px;
+  max-height: 300px;
+  width: 50vw;
+  height: 30vh;
   border-radius: 20px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   margin-top: 20px;
