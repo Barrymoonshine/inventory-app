@@ -1,13 +1,8 @@
 import multer from 'multer';
+import Datauri from 'datauri';
+import path from 'path';
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + file.originalname);
-  },
-});
+const storage = multer.memoryStorage();
 
 // Back-end validation on file type
 const fileFilter = (req, file, cb) => {
@@ -20,6 +15,11 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+const dUri = new Datauri();
+
+const dataUri = (req) =>
+  dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
+
 // Only accept files up to 5MB
 const upload = multer({
   storage,
@@ -27,4 +27,4 @@ const upload = multer({
   fileFilter,
 });
 
-export default upload;
+export { upload, dataUri };
