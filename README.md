@@ -8,6 +8,8 @@ StockMgr is a CRUD application that allows users to add, view, edit and delete p
 
 This app was built using Node JS, Express & Express Validator, Mongoose, Mongo DB Atlas, Mutler and DotEnv on the back-end and (limited) vanilla JavaScript and CSS on the front-end. Back-end code follows the Model View Controller (MVC) design pattern.
 
+Hosted and deployed on fly.io.
+
 ## Key skills employed
 
 **Express & Node JS**
