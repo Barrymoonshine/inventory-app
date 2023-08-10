@@ -1,5 +1,7 @@
 import Product from '../models/products.js';
 import Category from '../models/categories.js';
+import { dataUri } from '../middleware/mutler.js';
+import { cloudinaryConfig, uploader } from '../middleware/cloudinary.js';
 
 const product_add = async (req, res) => {
   try {
@@ -72,9 +74,14 @@ const product_delete = async (req, res) => {
 
 const product_post = async (req, res) => {
   try {
+    const file = dataUri(req).content;
+    const response = await uploader.upload(file);
+    const result = response.url;
+    console.log('response', response);
+    console.log('result', result);
     const product = new Product({
       ...req.body,
-      productImage: req.file.path,
+      productImage: result,
     });
     await product.save();
     res.json({ redirect: '/dashboard' });

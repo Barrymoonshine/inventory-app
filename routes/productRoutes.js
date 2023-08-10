@@ -13,7 +13,7 @@ import {
   passwordValidation,
   validate,
 } from '../middleware/validator.js';
-import upload from '../middleware/mutler.js';
+import { upload } from '../middleware/mutler.js';
 
 const routes = express.Router();
 
