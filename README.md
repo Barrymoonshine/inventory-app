@@ -26,7 +26,7 @@ Hosted and deployed on fly.io.
 - Created and configured database collections using Mongo DB Atlas and Mongoose Schemas
 - Making asynchronous calls to the database using Mongoose methods such as `find`, `save` and `findByIdAndDelete`
 - Using the dotenv package to securely store and access database credentials on the environment variable
-- Uploaded files using the Mutler package to store an entry in the data base with the location of image saved in the public images directory
+- Uploaded files using the Mutler package to store the image in Clodinary and URL in the database so images persist
 
 **EJS**
 
