@@ -4,7 +4,7 @@ Live link: https://misty-hill-10.fly.dev/
 
 ## Summary
 
-StockMgr is a CRUD application that allows users to add, view, edit and delete products and categories. Users can upload and edit images of their products, and critical changes (editing and deleting) are protected by an authorisation password.
+StockMgr is a CRUD application that allows users to add, view, edit and delete products and categories. Users can upload and edit images of their products, and critical changes (editing and deleting) are protected by an authorisation password (password1234).
 
 This app was built using Node JS, Express & Express Validator, Mongoose, Mongo DB Atlas, Mutler and DotEnv on the back-end and (limited) vanilla JavaScript and CSS on the front-end. Back-end code follows the Model View Controller (MVC) design pattern.
 
