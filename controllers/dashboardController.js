@@ -11,7 +11,13 @@ export const dashboard_get = async (req, res) => {
       script: null,
     });
   } catch (err) {
-    console.log(`Mongoose find error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'An internal server error occurred when loading the page.',
+        err,
+      },
+    });
   }
 };
 
@@ -36,6 +42,12 @@ export const dashboard_post = async (req, res) => {
       script: null,
     });
   } catch (err) {
-    console.log(`Mongoose find error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'An internal server error occurred when loading the page.',
+        err,
+      },
+    });
   }
 };

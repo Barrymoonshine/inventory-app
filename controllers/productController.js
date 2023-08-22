@@ -10,7 +10,13 @@ export const product_add = async (req, res) => {
       script: 'add-product',
     });
   } catch (err) {
-    console.log(`Mongoose find error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'An internal server error occurred when loading the page.',
+        err,
+      },
+    });
   }
 };
 
@@ -26,7 +32,13 @@ export const product_get_view = async (req, res) => {
       script: null,
     });
   } catch (err) {
-    console.log(`Edit product error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'An internal server error occurred when loading the page.',
+        err,
+      },
+    });
   }
 };
 
@@ -42,7 +54,13 @@ export const product_get_edit = async (req, res) => {
       script: 'edit-product',
     });
   } catch (err) {
-    console.log(`Edit product error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'An internal server error occurred when loading the page.',
+        err,
+      },
+    });
   }
 };
 
@@ -56,7 +74,13 @@ export const product_get_delete = async (req, res) => {
       script: 'delete-product',
     });
   } catch (err) {
-    console.log(`Edit product error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'An internal server error occurred when loading the page.',
+        err,
+      },
+    });
   }
 };
 
@@ -66,7 +90,13 @@ export const product_delete = async (req, res) => {
     await Product.findByIdAndDelete(id);
     res.json({ redirect: '/dashboard' });
   } catch (err) {
-    console.log(`Display product error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'DATABASE_ERROR',
+        message: 'A database error occurred when deleting a record.',
+        err,
+      },
+    });
   }
 };
 
@@ -79,7 +109,13 @@ export const product_post = async (req, res) => {
     await product.save();
     res.json({ redirect: '/dashboard' });
   } catch (err) {
-    console.log(`Mongo DB add to DB error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'DATABASE_ERROR',
+        message: 'A database error occurred when saving a new record.',
+        err,
+      },
+    });
   }
 };
 
@@ -94,6 +130,12 @@ export const product_put = async (req, res) => {
     await Product.findByIdAndUpdate(req.body._id, updatedProd);
     res.json({ redirect: '/dashboard' });
   } catch (err) {
-    console.log(`Edit product error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'DATABASE_ERROR',
+        message: 'A database error occurred when updating your record.',
+        err,
+      },
+    });
   }
 };

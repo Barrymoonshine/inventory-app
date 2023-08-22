@@ -3,6 +3,7 @@ const inStock = document.getElementById('in-stock');
 const quantityInput = document.getElementById('quantity');
 const errorMessages = document.querySelectorAll('.errors');
 const productImgUpload = document.getElementById('product-image');
+const categoryError = document.getElementById('category-error');
 
 const getValue = (input) => document.getElementById(`${input}`).value;
 
@@ -42,6 +43,7 @@ addProdForm.addEventListener('submit', async (e) => {
       });
     }
   } catch (err) {
+    categoryError.textContent = `There was an error with adding your new product, please try again. Error code: ${err}`;
     console.log(err);
   }
 });

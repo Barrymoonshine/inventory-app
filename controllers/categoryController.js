@@ -10,6 +10,12 @@ export const category_post = async (req, res) => {
     await category.save();
     res.redirect('/dashboard');
   } catch (err) {
-    console.log(`Mongo DB add to DB error: ${err}`);
+    res.status(500).json({
+      error: {
+        code: 'DATABASE_ERROR',
+        message: 'A database error occurred when saving a new record.',
+        err,
+      },
+    });
   }
 };

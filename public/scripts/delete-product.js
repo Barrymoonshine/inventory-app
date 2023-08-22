@@ -26,6 +26,7 @@ deleteForm.addEventListener('submit', async (e) => {
       passwordError.textContent = data[0].msg;
     }
   } catch (err) {
+    passwordError.textContent = `There was an error with deleting this product, please try again. Error: ${err.message}`;
     console.log(err);
   }
 });

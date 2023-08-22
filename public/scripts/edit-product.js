@@ -3,6 +3,7 @@ const inStock = document.getElementById('in-stock');
 const quantityInput = document.getElementById('quantity');
 const productImgUpload = document.getElementById('product-image-upload');
 const errorMessages = document.querySelectorAll('.errors');
+const categoryError = document.getElementById('category-error');
 
 const getValue = (input) => document.getElementById(`${input}`).value;
 
@@ -43,6 +44,7 @@ editProdForm.addEventListener('submit', async (e) => {
       });
     }
   } catch (err) {
+    categoryError.textContent = `There was an error with editing this product, please try again. Error: ${err.message}`;
     console.log(err);
   }
 });
