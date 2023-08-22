@@ -17,14 +17,18 @@ const dashboard_get = async (req, res) => {
 
 const dashboard_post = async (req, res) => {
   try {
-    const result = await Product.find({
-      $or: [
-        { name: { $regex: req.body.search, $options: 'i' } },
-        { sku: { $regex: req.body.search, $options: 'i' } },
-      ],
-    }).sort({
-      createdAt: -1,
-    });
+    const result = req.body.search
+      ? await Product.find({
+          $or: [
+            { name: { $regex: req.body.search, $options: 'i' } },
+            { sku: { $regex: req.body.search, $options: 'i' } },
+          ],
+        }).sort({
+          createdAt: -1,
+        })
+      : await Product.find().sort({
+          createdAt: -1,
+        });
     res.render('dashboard', {
       products: result,
       styles: 'dashboard',
