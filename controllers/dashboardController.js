@@ -2,11 +2,11 @@ import Product from '../models/products.js';
 
 export const dashboard_get = async (req, res) => {
   try {
-    const result = await Product.find().sort({
+    const products = await Product.find().sort({
       createdAt: -1,
     });
     res.render('dashboard', {
-      products: result,
+      products,
       styles: 'dashboard',
       script: null,
     });
@@ -17,7 +17,7 @@ export const dashboard_get = async (req, res) => {
 
 export const dashboard_post = async (req, res) => {
   try {
-    const result = req.body.search
+    const products = req.body.search
       ? await Product.find({
           $or: [
             { name: { $regex: req.body.search, $options: 'i' } },
@@ -31,7 +31,7 @@ export const dashboard_post = async (req, res) => {
           createdAt: -1,
         });
     res.render('dashboard', {
-      products: result,
+      products,
       styles: 'dashboard',
       script: null,
     });

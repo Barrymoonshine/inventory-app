@@ -3,9 +3,9 @@ import Category from '../models/categories.js';
 
 export const product_add = async (req, res) => {
   try {
-    const result = await Category.find().sort({ createdAt: -1 });
+    const categories = await Category.find().sort({ createdAt: -1 });
     res.render('products/add-product', {
-      categories: result,
+      categories,
       styles: 'products/add-product',
       script: 'add-product',
     });
