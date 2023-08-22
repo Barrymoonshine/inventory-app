@@ -160,8 +160,8 @@
 }
 
 .no-prods-found {
-  text-align: center;
   background-color: rgb(255, 255, 255);
-  width: 80vw;
   margin-top: 0px;
+  width: 1280px;
+  text-align: center;
 }
