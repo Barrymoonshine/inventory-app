@@ -5,7 +5,13 @@
     <%- include('../partials/nav.ejs')%>
     <div class="edit-product-content">
       <h2>Edit: <%= product.name %></h2>
-      <p><img src="/<%= product.productImage.slice(7) %>" /></p>
+      <p>
+        <img
+          src="/<%= product.productImage.slice(7) %>"
+          width="200px"
+          height="200px"
+        />
+      </p>
       <form class="edit-product-form" data-doc="<%= product._id %>">
         <label for="name"> Product Name:</label>
         <input
