@@ -72,7 +72,6 @@ const product_delete = async (req, res) => {
 
 const product_post = async (req, res) => {
   try {
-    console.log('req.file.path in product_post', req.file.path);
     const product = new Product({
       ...req.body,
       productImage: req.file.path,

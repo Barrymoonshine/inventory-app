@@ -16,8 +16,7 @@ const formValidation = () => [
     .isNumeric()
     .notEmpty()
     .custom((value) => {
-      // Gotcha - req.body parses all input fields as strings by default!
-      if (value === '0' || value === '0.0' || value === '0.00') {
+      if (parseInt(value) <= 0) {
         return false;
       }
       return true;
@@ -25,7 +24,7 @@ const formValidation = () => [
     .withMessage('Price must be above £0'),
   check('inStock')
     .custom((value, { req }) => {
-      if (value === 'true' && req.body.quantity <= '0') {
+      if (value === 'true' && parseInt(req.body.quantity) <= 0) {
         return false;
       }
       if (value === 'false') {

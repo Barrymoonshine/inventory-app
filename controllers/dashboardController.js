@@ -22,6 +22,7 @@ const dashboard_post = async (req, res) => {
           $or: [
             { name: { $regex: req.body.search, $options: 'i' } },
             { sku: { $regex: req.body.search, $options: 'i' } },
+            { category: { $regex: req.body.search, $options: 'i' } },
           ],
         }).sort({
           createdAt: -1,
