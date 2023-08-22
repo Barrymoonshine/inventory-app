@@ -1,6 +1,6 @@
 import Product from '../models/products.js';
 
-const dashboard_get = async (req, res) => {
+export const dashboard_get = async (req, res) => {
   try {
     const result = await Product.find().sort({
       createdAt: -1,
@@ -15,7 +15,7 @@ const dashboard_get = async (req, res) => {
   }
 };
 
-const dashboard_post = async (req, res) => {
+export const dashboard_post = async (req, res) => {
   try {
     const result = req.body.search
       ? await Product.find({
@@ -39,5 +39,3 @@ const dashboard_post = async (req, res) => {
     console.log(`Mongoose find error: ${err}`);
   }
 };
-
-export { dashboard_get, dashboard_post };

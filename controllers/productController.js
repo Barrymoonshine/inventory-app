@@ -1,7 +1,7 @@
 import Product from '../models/products.js';
 import Category from '../models/categories.js';
 
-const product_add = async (req, res) => {
+export const product_add = async (req, res) => {
   try {
     const result = await Category.find().sort({ createdAt: -1 });
     res.render('products/add-product', {
@@ -14,7 +14,7 @@ const product_add = async (req, res) => {
   }
 };
 
-const product_get_view = async (req, res) => {
+export const product_get_view = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
@@ -30,7 +30,7 @@ const product_get_view = async (req, res) => {
   }
 };
 
-const product_get_edit = async (req, res) => {
+export const product_get_edit = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
@@ -46,7 +46,7 @@ const product_get_edit = async (req, res) => {
   }
 };
 
-const product_get_delete = async (req, res) => {
+export const product_get_delete = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
@@ -60,7 +60,7 @@ const product_get_delete = async (req, res) => {
   }
 };
 
-const product_delete = async (req, res) => {
+export const product_delete = async (req, res) => {
   try {
     const { id } = req.params;
     await Product.findByIdAndDelete(id);
@@ -70,7 +70,7 @@ const product_delete = async (req, res) => {
   }
 };
 
-const product_post = async (req, res) => {
+export const product_post = async (req, res) => {
   try {
     const product = new Product({
       ...req.body,
@@ -83,7 +83,7 @@ const product_post = async (req, res) => {
   }
 };
 
-const product_put = async (req, res) => {
+export const product_put = async (req, res) => {
   try {
     const updatedProd = {
       ...req.body,
@@ -96,14 +96,4 @@ const product_put = async (req, res) => {
   } catch (err) {
     console.log(`Edit product error: ${err}`);
   }
-};
-
-export {
-  product_add,
-  product_get_view,
-  product_get_edit,
-  product_get_delete,
-  product_delete,
-  product_post,
-  product_put,
 };
