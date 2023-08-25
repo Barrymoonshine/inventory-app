@@ -43,7 +43,7 @@ addProdForm.addEventListener('submit', async (e) => {
       });
     }
   } catch (err) {
-    categoryError.textContent = `There was an error with adding your new product, please try again. Error code: ${err}`;
+    categoryError.textContent = `There was an error with adding your new product, please try again. Error: ${err.message}`;
     console.log(err);
   }
 });

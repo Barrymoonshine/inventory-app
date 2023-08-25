@@ -1,6 +1,6 @@
 import { check, validationResult } from 'express-validator';
 
-// File validation performed by Mutler
+// File validation performed by Multer
 
 const formValidation = () => [
   check('name').isString().notEmpty().withMessage('Please enter a valid name'),
@@ -16,7 +16,7 @@ const formValidation = () => [
     .isNumeric()
     .notEmpty()
     .custom((value) => {
-      if (parseInt(value) <= 0) {
+      if (parseFloat(value) <= 0) {
         return false;
       }
       return true;
