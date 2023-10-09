@@ -2,6 +2,8 @@
 
 Live link: https://misty-hill-10.fly.dev/
 
+![Model](https://github.com/Barrymoonshine/inventory-app/blob/main/public/images/inventory-app-screenshot.png?raw=true)
+
 ## Summary
 
 StockMgr is a CRUD application that allows users to add, view, edit and delete products and categories. Users can upload and edit images of their products, and critical changes (editing and deleting) are protected by an authorisation password (password1234).
